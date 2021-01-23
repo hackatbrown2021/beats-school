@@ -27,13 +27,13 @@ const styles = [
     layers: {
       "7GKntRiYeh": {
         none: {
-          text: "Welcome Back!",
+          text: "Welcome Back,",
           htmlElement: "h1",
         },
       },
       "3wAXGzmZPS": {
         none: {
-          text: ":name:",
+          text: "John Doe",
           htmlElement: "h1",
         },
       },
@@ -41,7 +41,12 @@ const styles = [
   },
   {
     type: "boolean",
-    propName: "example",
+    propName: "listexample",
+    layers: {},
+  },
+  {
+    type: "boolean",
+    propName: "upcomingexample",
     layers: {},
   },
 ];
@@ -60,7 +65,7 @@ const defaultPropValues = [
   },
   {
     type: "boolean",
-    propName: "example",
+    propName: "listexample",
     layers: {
       "4h4ZqgPRUH": {
         none: {
@@ -70,12 +75,24 @@ const defaultPropValues = [
       Tx8y1JmvZr: {},
     },
   },
+  {
+    type: "boolean",
+    propName: "upcomingexample",
+    layers: {
+      "4h4ZqgPRUH": {},
+      Tx8y1JmvZr: {},
+    },
+  },
 ];
 
 const variantPropTypes = [
   {
     type: "boolean",
-    propName: "example",
+    propName: "listexample",
+  },
+  {
+    type: "boolean",
+    propName: "upcomingexample",
   },
 ];
 
@@ -184,7 +201,11 @@ Dashboard.SongList = SongList;
 Dashboard.Tabs = Tabs;
 Dashboard.__variants = [
   {
-    name: "example",
+    name: "listexample",
+    type: "variant",
+  },
+  {
+    name: "upcomingexample",
     type: "variant",
   },
 ];

@@ -94,6 +94,7 @@ const SongEntry: {
     props: {
       songName?: string;
       dateName?: string;
+      progress?: string;
       ProgressBar?: React.ReactNode;
       IconButton?: React.ReactNode;
     } & CommonProps<HTMLDivElement>

@@ -34,6 +34,11 @@ const styles = [
           text: "Dec 25, 2020",
         },
       },
+      FUcYVZu7eZ: {
+        none: {
+          text: "50%",
+        },
+      },
     },
   },
 ];
@@ -118,27 +123,49 @@ function SongEntry(_props) {
           addSpacing={false}
           element={getStyle("2snvFPnzJU", "htmlElement")}
         >
-          {props.ProgressBar === undefined ? (
-            <ProgressBar
-              key={"JSMrfpTbbX"}
-              {...getCompositeDefaultProps("JSMrfpTbbX")}
-              id="ProgressBar_JSMrfpTbbX"
-              className="__visly_reset_7X7HTLRqyD __visly_scope_HgquYGqsg9_JSMrfpTbbX"
-            />
-          ) : (
-            <ProgressBarContext.Provider
-              key="JSMrfpTbbX-provider"
-              value={{
-                key: "JSMrfpTbbX",
-                id: "ProgressBar_JSMrfpTbbX",
-                className:
-                  "__visly_reset_7X7HTLRqyD __visly_scope_HgquYGqsg9_JSMrfpTbbX",
-                ...getCompositeDefaultProps("JSMrfpTbbX"),
-              }}
-            >
-              {props.ProgressBar}
-            </ProgressBarContext.Provider>
-          )}
+          {[
+            <SpacerPrimitive
+              id={"Spacer_6tx9V4ZnVp"}
+              className={
+                "__visly_reset_7X7HTLRqyD __visly_scope_HgquYGqsg9_6tx9V4ZnVp"
+              }
+              key={"6tx9V4ZnVp"}
+            />,
+            props.ProgressBar === undefined ? (
+              <ProgressBar
+                key={"JSMrfpTbbX"}
+                {...getCompositeDefaultProps("JSMrfpTbbX")}
+                id="ProgressBar_JSMrfpTbbX"
+                className="__visly_reset_7X7HTLRqyD __visly_scope_HgquYGqsg9_JSMrfpTbbX"
+              />
+            ) : (
+              <ProgressBarContext.Provider
+                key="JSMrfpTbbX-provider"
+                value={{
+                  key: "JSMrfpTbbX",
+                  id: "ProgressBar_JSMrfpTbbX",
+                  className:
+                    "__visly_reset_7X7HTLRqyD __visly_scope_HgquYGqsg9_JSMrfpTbbX",
+                  ...getCompositeDefaultProps("JSMrfpTbbX"),
+                }}
+              >
+                {props.ProgressBar}
+              </ProgressBarContext.Provider>
+            ),
+            <TextPrimitive
+              id={"Text_FUcYVZu7eZ"}
+              className={
+                "__visly_reset_7X7HTLRqyD __visly_scope_HgquYGqsg9_FUcYVZu7eZ"
+              }
+              key={"FUcYVZu7eZ"}
+              text={
+                exists(props.progress)
+                  ? props.progress
+                  : getStyle("FUcYVZu7eZ", "text")
+              }
+              element={getStyle("FUcYVZu7eZ", "htmlElement")}
+            />,
+          ]}
         </ContainerPrimitive>,
         <SpacerPrimitive
           id={"Spacer_51JzEs6qEB"}

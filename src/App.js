@@ -1,24 +1,25 @@
-import logo from "./logo.svg";
+import logo from "./images/title.png";
 import "./App.css";
+import SignIn from "./visly/Components/Navbar/SignIn";
+import Account from "./visly/Components/Navbar/Account";
+import Navbar from "./visly/Layout/Navbar";
+import LoginPage from "./Pages/Login";
+import MusicApp from "./MusicApp.js";
+import { Route, Switch } from "react-router-dom";
 
 function App() {
+  var authenticated = true;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Navbar
+        imageSrc={logo}
+        AccountButton={authenticated ? <Account /> : <SignIn />}
+      />
+      <Switch>
+        <Route path="/" component={MusicApp} exact />
+        <Route path="/login" component={LoginPage} />
+      </Switch>
+    </main>
   );
 }
 
