@@ -42,6 +42,14 @@ export const h2 = {
   lineHeight: "32px",
   letterSpacing: "0px",
 };
+export const h2Thin = {
+  fontFamily: "Inter, sans-serif",
+  fontSize: "24px",
+  fontWeight: 200,
+  fontStyle: "normal",
+  lineHeight: "32px",
+  textTransform: "capitalize",
+};
 export const h3 = {
   fontFamily: "Inter, sans-serif",
   fontSize: "20px",

@@ -17,6 +17,7 @@ export const buttonSmall: TextStyle;
 export const code: TextStyle;
 export const h1: TextStyle;
 export const h2: TextStyle;
+export const h2Thin: TextStyle;
 export const h3: TextStyle;
 export const h4: TextStyle;
 export const h5: TextStyle;

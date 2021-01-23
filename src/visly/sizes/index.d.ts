@@ -5,6 +5,7 @@ export const dimensions: {
   sizeMedium: string;
   sizeSmall: string;
   sizeXlarge: string;
+  xlarge: string;
 };
 export const radius: {
   radiusLarge: string;
