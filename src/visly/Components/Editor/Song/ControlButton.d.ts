@@ -88,6 +88,10 @@ export interface CommonProps<T extends HTMLElement> {
   onBlurCapture?: React.FocusEventHandler<T>;
 }
 const ControlButton: {
-  (props: {} & CommonProps<HTMLDivElement>): JSX.Element;
+  (
+    props: {
+      icon?: string;
+    } & CommonProps<HTMLDivElement>
+  ): JSX.Element;
 };
 export default ControlButton;

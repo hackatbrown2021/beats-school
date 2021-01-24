@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import { default as ProgressBar } from "../../ProgressBar";
-import { default as IconButton } from "../../IconButton";
+import { default as ContinueButton } from "../../IconButton";
 import React from "react";
 export interface CommonProps<T extends HTMLElement> {
   className?: string;
@@ -96,10 +96,10 @@ const SongEntry: {
       dateName?: string;
       progress?: string;
       ProgressBar?: React.ReactNode;
-      IconButton?: React.ReactNode;
+      ContinueButton?: React.ReactNode;
     } & CommonProps<HTMLDivElement>
   ): JSX.Element;
   ProgressBar: typeof ProgressBar;
-  IconButton: typeof IconButton;
+  ContinueButton: typeof ContinueButton;
 };
 export default SongEntry;

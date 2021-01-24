@@ -18,7 +18,10 @@ import {
 } from "../../_internal_primitives";
 import * as icons from "../../icons";
 import { default as ProgressBar, ProgressBarContext } from "../../ProgressBar";
-import { default as IconButton, IconButtonContext } from "../../IconButton";
+import {
+  default as ContinueButton,
+  IconButtonContext as ContinueButtonContext,
+} from "../../IconButton";
 
 const styles = [
   {
@@ -174,26 +177,26 @@ function SongEntry(_props) {
           }
           key={"51JzEs6qEB"}
         />,
-        props.IconButton === undefined ? (
-          <IconButton
+        props.ContinueButton === undefined ? (
+          <ContinueButton
             key={"BL4cC8cLj1"}
             {...getCompositeDefaultProps("BL4cC8cLj1")}
-            id="IconButton_BL4cC8cLj1"
+            id="ContinueButton_BL4cC8cLj1"
             className="__visly_reset_7X7HTLRqyD __visly_scope_HgquYGqsg9_BL4cC8cLj1"
           />
         ) : (
-          <IconButtonContext.Provider
+          <ContinueButtonContext.Provider
             key="BL4cC8cLj1-provider"
             value={{
               key: "BL4cC8cLj1",
-              id: "IconButton_BL4cC8cLj1",
+              id: "ContinueButton_BL4cC8cLj1",
               className:
                 "__visly_reset_7X7HTLRqyD __visly_scope_HgquYGqsg9_BL4cC8cLj1",
               ...getCompositeDefaultProps("BL4cC8cLj1"),
             }}
           >
-            {props.IconButton}
-          </IconButtonContext.Provider>
+            {props.ContinueButton}
+          </ContinueButtonContext.Provider>
         ),
       ]}
     </RootPrimitive>
@@ -201,7 +204,7 @@ function SongEntry(_props) {
 }
 
 SongEntry.ProgressBar = ProgressBar;
-SongEntry.IconButton = IconButton;
+SongEntry.ContinueButton = ContinueButton;
 SongEntry.__variants = [];
 
 export default SongEntry;

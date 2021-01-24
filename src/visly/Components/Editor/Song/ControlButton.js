@@ -6,6 +6,7 @@ import "../../../reset.css";
 import "./ControlButton.css";
 import React, { createContext, useContext } from "react";
 import {
+  exists,
   findSetVariantProps,
   makeCompositeDefaultProps,
 } from "../../../_internal_utils";
@@ -72,7 +73,7 @@ function ControlButton(_props) {
           }
           key={"W4r7yiSBXP"}
           useMask={getStyle("W4r7yiSBXP", "useMask")}
-          src={getStyle("W4r7yiSBXP", "icon")}
+          src={exists(props.icon) ? props.icon : getStyle("W4r7yiSBXP", "icon")}
         />
       )}
     </RootPrimitive>

@@ -11,6 +11,7 @@ import {
   makeCompositeDefaultProps,
 } from "../../../_internal_utils";
 import { RootPrimitive, TextPrimitive } from "../../../_internal_primitives";
+import * as icons from "../../../icons";
 import {
   default as BpmDecr,
   ControlButtonContext as BpmDecrContext,
@@ -35,8 +36,16 @@ const defaultPropValues = [
   {
     type: "default",
     layers: {
-      "8cf8ykYYY2": {},
-      Lc1Y7VXszo: {},
+      "8cf8ykYYY2": {
+        none: {
+          icon: icons.minus,
+        },
+      },
+      Lc1Y7VXszo: {
+        none: {
+          icon: icons.plus,
+        },
+      },
     },
   },
 ];

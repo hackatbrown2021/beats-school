@@ -41,7 +41,7 @@ const styles = [
       },
       Ps7RDgwaoV: {
         none: {
-          text: "Completed:",
+          text: "Completed Tracks:",
         },
       },
     },

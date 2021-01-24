@@ -16,7 +16,10 @@ import {
   ContainerPrimitive,
 } from "../../_internal_primitives";
 import * as icons from "../../icons";
-import { default as IconButton, IconButtonContext } from "../../IconButton";
+import {
+  default as ContinueButton,
+  IconButtonContext as ContinueButtonContext,
+} from "../../IconButton";
 
 const styles = [
   {
@@ -107,26 +110,26 @@ function SongDetail(_props) {
             addSpacing={false}
             element={getStyle("GRYgYhc8dn", "htmlElement")}
           >
-            {props.IconButton === undefined ? (
-              <IconButton
+            {props.ContinueButton === undefined ? (
+              <ContinueButton
                 key={"WMUNo4PYjD"}
                 {...getCompositeDefaultProps("WMUNo4PYjD")}
-                id="IconButton_WMUNo4PYjD"
+                id="ContinueButton_WMUNo4PYjD"
                 className="__visly_reset_7X7HTLRqyD __visly_scope_YF2T27v7M2_WMUNo4PYjD"
               />
             ) : (
-              <IconButtonContext.Provider
+              <ContinueButtonContext.Provider
                 key="WMUNo4PYjD-provider"
                 value={{
                   key: "WMUNo4PYjD",
-                  id: "IconButton_WMUNo4PYjD",
+                  id: "ContinueButton_WMUNo4PYjD",
                   className:
                     "__visly_reset_7X7HTLRqyD __visly_scope_YF2T27v7M2_WMUNo4PYjD",
                   ...getCompositeDefaultProps("WMUNo4PYjD"),
                 }}
               >
-                {props.IconButton}
-              </IconButtonContext.Provider>
+                {props.ContinueButton}
+              </ContinueButtonContext.Provider>
             )}
           </ContainerPrimitive>
         </>
@@ -135,7 +138,7 @@ function SongDetail(_props) {
   );
 }
 
-SongDetail.IconButton = IconButton;
+SongDetail.ContinueButton = ContinueButton;
 SongDetail.__variants = [];
 
 export default SongDetail;

@@ -6,26 +6,33 @@ import { SongEntry } from "../visly/Components/Song";
 import { auth, data, firebase } from "../auth/firebase";
 import { useHistory } from "react-router-dom";
 
-const songEntryFromDoc = (doc) => {
-  const s_data = doc.data();
-  console.log(s_data);
-
-  return (
-    <SongEntry
-      id={"song" + doc.id}
-      songName={s_data.name}
-      dateName={new Date(s_data.ts_start.seconds * 1000).toDateString()}
-      progress={"Not enabled"}
-    />
-  );
-};
-
 export default () => {
   const history = useHistory();
 
   let [user, setUser] = useState(null);
   let [tab, setTab] = useState("current");
   let [content, setContent] = useState(<React.Fragment></React.Fragment>);
+
+  const songEntryFromDoc = (doc) => {
+    const s_data = doc.data();
+    console.log(s_data);
+
+    return (
+      <SongEntry
+        id={"song" + doc.id}
+        songName={s_data.name}
+        dateName={new Date(s_data.ts_start.seconds * 1000).toDateString()}
+        progress={"50 %"}
+        ContinueButton={
+          <SongEntry.ContinueButton
+            onPress={() => {
+              history.push("/dawsample/" + doc.id);
+            }}
+          />
+        }
+      />
+    );
+  };
 
   useEffect(() => {
     auth.onAuthStateChanged((newUser) => {
@@ -95,7 +102,17 @@ export default () => {
                         paddingTop: "16px",
                       }}
                     >
-                      <SongDetail name={s_data.name} type={t_type} />
+                      <SongDetail
+                        name={s_data.name}
+                        type={t_type}
+                        ContinueButton={
+                          <SongDetail.ContinueButton
+                            onPress={() => {
+                              history.push("/dawsample/" + doc.id);
+                            }}
+                          />
+                        }
+                      />
                     </div>
                   );
                 });
