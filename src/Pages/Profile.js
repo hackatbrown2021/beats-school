@@ -23,8 +23,9 @@ export default () => {
         SignOut={
           <Settings.SignOut
             onClick={() => {
-              auth.signOut();
-              history.push("/");
+              auth.signOut().then(() => {
+                history.push("/");
+              });
             }}
           />
         }

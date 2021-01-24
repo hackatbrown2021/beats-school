@@ -6,10 +6,17 @@ import "../../reset.css";
 import "./SongDetail.css";
 import React, { createContext, useContext } from "react";
 import {
+  exists,
   findSetVariantProps,
   makeCompositeDefaultProps,
 } from "../../_internal_utils";
-import { RootPrimitive, TextPrimitive } from "../../_internal_primitives";
+import {
+  RootPrimitive,
+  TextPrimitive,
+  ContainerPrimitive,
+} from "../../_internal_primitives";
+import * as icons from "../../icons";
+import { default as IconButton, IconButtonContext } from "../../IconButton";
 
 const styles = [
   {
@@ -32,7 +39,13 @@ const styles = [
 const defaultPropValues = [
   {
     type: "default",
-    layers: {},
+    layers: {
+      WMUNo4PYjD: {
+        none: {
+          icon: icons.arrowRight,
+        },
+      },
+    },
   },
 ];
 
@@ -64,29 +77,65 @@ function SongDetail(_props) {
       {(getStyle) => (
         <>
           <TextPrimitive
-            id={"Text_72mta6mxDz"}
+            id={"Name_72mta6mxDz"}
             className={
               "__visly_reset_7X7HTLRqyD __visly_scope_YF2T27v7M2_72mta6mxDz"
             }
             key={"72mta6mxDz"}
-            text={getStyle("72mta6mxDz", "text")}
+            text={
+              exists(props.name) ? props.name : getStyle("72mta6mxDz", "text")
+            }
             element={getStyle("72mta6mxDz", "htmlElement")}
           />
           <TextPrimitive
-            id={"Text_GjP3Hgoa3y"}
+            id={"Type_GjP3Hgoa3y"}
             className={
               "__visly_reset_7X7HTLRqyD __visly_scope_YF2T27v7M2_GjP3Hgoa3y"
             }
             key={"GjP3Hgoa3y"}
-            text={getStyle("GjP3Hgoa3y", "text")}
+            text={
+              exists(props.type) ? props.type : getStyle("GjP3Hgoa3y", "text")
+            }
             element={getStyle("GjP3Hgoa3y", "htmlElement")}
           />
+          <ContainerPrimitive
+            id={"Container_GRYgYhc8dn"}
+            className={
+              "__visly_reset_7X7HTLRqyD __visly_scope_YF2T27v7M2_GRYgYhc8dn"
+            }
+            key={"GRYgYhc8dn"}
+            addSpacing={false}
+            element={getStyle("GRYgYhc8dn", "htmlElement")}
+          >
+            {props.IconButton === undefined ? (
+              <IconButton
+                key={"WMUNo4PYjD"}
+                {...getCompositeDefaultProps("WMUNo4PYjD")}
+                id="IconButton_WMUNo4PYjD"
+                className="__visly_reset_7X7HTLRqyD __visly_scope_YF2T27v7M2_WMUNo4PYjD"
+              />
+            ) : (
+              <IconButtonContext.Provider
+                key="WMUNo4PYjD-provider"
+                value={{
+                  key: "WMUNo4PYjD",
+                  id: "IconButton_WMUNo4PYjD",
+                  className:
+                    "__visly_reset_7X7HTLRqyD __visly_scope_YF2T27v7M2_WMUNo4PYjD",
+                  ...getCompositeDefaultProps("WMUNo4PYjD"),
+                }}
+              >
+                {props.IconButton}
+              </IconButtonContext.Provider>
+            )}
+          </ContainerPrimitive>
         </>
       )}
     </RootPrimitive>
   );
 }
 
+SongDetail.IconButton = IconButton;
 SongDetail.__variants = [];
 
 export default SongDetail;
