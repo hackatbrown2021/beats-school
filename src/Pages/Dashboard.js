@@ -23,8 +23,6 @@ export default () => {
   const songEntryFromDoc = (doc) => {
     if (doc.exists) {
       const s_data = doc.data();
-      console.log("THEM DATAS");
-      console.log(doc);
 
       return (
         <SongEntry
@@ -87,13 +85,7 @@ export default () => {
                       type: "melody",
                     });
                   } else {
-                    console.log("existing song");
                     var selectSong = querySnapshot.docs[0];
-                    console.log(selectSong);
-                    console.log(selectSong.data());
-
-                    console.log("SONNNGG");
-                    console.log(selectSong.id);
 
                     selectSong.ref.update({
                       tracks: selectSong.data().tracks + 1,
