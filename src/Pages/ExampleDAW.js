@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Song, Track, Instrument, Effect } from "reactronica";
 import { Daw } from "../visly/Components/Editor";
+import { icons } from "../visly";
 import { SongControl } from "../visly/Components/Editor/Song";
 import {
   TrackLabel,
@@ -221,6 +222,7 @@ export default () => {
                 Play={
                   <Daw.SongInfo.SongControl.Play
                     onClick={() => setIsPlaying(!isPlaying)}
+                    icon={isPlaying ? icons.close : icons.arrowRight}
                   />
                 }
                 Bpm={
