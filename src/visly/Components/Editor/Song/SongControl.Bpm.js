@@ -6,16 +6,17 @@ import "../../../reset.css";
 import "./SongControl.Bpm.css";
 import React, { createContext, useContext } from "react";
 import {
+  exists,
   findSetVariantProps,
   makeCompositeDefaultProps,
 } from "../../../_internal_utils";
 import { RootPrimitive, TextPrimitive } from "../../../_internal_primitives";
 import * as icons from "../../../icons";
 import {
-  default as ControlButton,
-  ControlButtonContext,
-  default as ControlButton1,
-  ControlButtonContext as ControlButton1Context,
+  default as BpmDecr,
+  ControlButtonContext as BpmDecrContext,
+  default as BpmIncr,
+  ControlButtonContext as BpmIncrContext,
 } from "../../../Components/Editor/Song/ControlButton";
 
 const styles = [
@@ -75,26 +76,26 @@ function Bpm(_props) {
       }}
     >
       {(getStyle) => [
-        props.ControlButton === undefined ? (
-          <ControlButton
+        props.BpmDecr === undefined ? (
+          <BpmDecr
             key={"8cf8ykYYY2"}
             {...getCompositeDefaultProps("8cf8ykYYY2")}
-            id="ControlButton_8cf8ykYYY2"
+            id="BpmDecr_8cf8ykYYY2"
             className="__visly_reset_7X7HTLRqyD __visly_scope_RMoSfFZHdm_8cf8ykYYY2"
           />
         ) : (
-          <ControlButtonContext.Provider
+          <BpmDecrContext.Provider
             key="8cf8ykYYY2-provider"
             value={{
               key: "8cf8ykYYY2",
-              id: "ControlButton_8cf8ykYYY2",
+              id: "BpmDecr_8cf8ykYYY2",
               className:
                 "__visly_reset_7X7HTLRqyD __visly_scope_RMoSfFZHdm_8cf8ykYYY2",
               ...getCompositeDefaultProps("8cf8ykYYY2"),
             }}
           >
-            {props.ControlButton}
-          </ControlButtonContext.Provider>
+            {props.BpmDecr}
+          </BpmDecrContext.Provider>
         ),
         <TextPrimitive
           id={"Text_U2xbjPKvTG"}
@@ -102,37 +103,39 @@ function Bpm(_props) {
             "__visly_reset_7X7HTLRqyD __visly_scope_RMoSfFZHdm_U2xbjPKvTG"
           }
           key={"U2xbjPKvTG"}
-          text={getStyle("U2xbjPKvTG", "text")}
+          text={
+            exists(props.text) ? props.text : getStyle("U2xbjPKvTG", "text")
+          }
           element={getStyle("U2xbjPKvTG", "htmlElement")}
         />,
-        props.ControlButton1 === undefined ? (
-          <ControlButton1
+        props.BpmIncr === undefined ? (
+          <BpmIncr
             key={"Lc1Y7VXszo"}
             {...getCompositeDefaultProps("Lc1Y7VXszo")}
-            id="ControlButton1_Lc1Y7VXszo"
+            id="BpmIncr_Lc1Y7VXszo"
             className="__visly_reset_7X7HTLRqyD __visly_scope_RMoSfFZHdm_Lc1Y7VXszo"
           />
         ) : (
-          <ControlButton1Context.Provider
+          <BpmIncrContext.Provider
             key="Lc1Y7VXszo-provider"
             value={{
               key: "Lc1Y7VXszo",
-              id: "ControlButton1_Lc1Y7VXszo",
+              id: "BpmIncr_Lc1Y7VXszo",
               className:
                 "__visly_reset_7X7HTLRqyD __visly_scope_RMoSfFZHdm_Lc1Y7VXszo",
               ...getCompositeDefaultProps("Lc1Y7VXszo"),
             }}
           >
-            {props.ControlButton1}
-          </ControlButton1Context.Provider>
+            {props.BpmIncr}
+          </BpmIncrContext.Provider>
         ),
       ]}
     </RootPrimitive>
   );
 }
 
-Bpm.ControlButton = ControlButton;
-Bpm.ControlButton1 = ControlButton1;
+Bpm.BpmDecr = BpmDecr;
+Bpm.BpmIncr = BpmIncr;
 Bpm.__variants = [];
 
 export default Bpm;

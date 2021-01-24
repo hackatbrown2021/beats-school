@@ -9,6 +9,7 @@ import SignUpPage from "./Pages/SignUp";
 import ProfilePage from "./Pages/Profile";
 import LandingPage from "./Pages/Landing";
 import DashboardPage from "./Pages/Dashboard";
+import ExampleDAW from "./Pages/ExampleDAW";
 import MusicApp from "./MusicApp.js";
 import DAWPage from "./Pages/DAW";
 import { Route, Switch } from "react-router-dom";
@@ -86,6 +87,7 @@ const App = () => {
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignUpPage} />
         <Route path="/daw" component={DAWPage} />
+        <Route path="/dawsample" component={ExampleDAW} />
       </Switch>
     </main>
   );

@@ -2,9 +2,11 @@
 /* tslint:disable */
 /* eslint-disable */
 import {
-  default as BpmDecr,
-  default as BpmIncr,
-} from "./Components/Editor/Song/ControlButton";
+  default as TrackButton,
+  default as TrackButton1,
+  default as TrackButton2,
+  default as TrackButton3,
+} from "./Components/Editor/Track/TrackButton";
 import React from "react";
 export interface CommonProps<T extends HTMLElement> {
   className?: string;
@@ -91,15 +93,18 @@ export interface CommonProps<T extends HTMLElement> {
   onBlur?: React.FocusEventHandler<T>;
   onBlurCapture?: React.FocusEventHandler<T>;
 }
-const Bpm: {
+const ExampleColumn: {
   (
     props: {
-      text?: string;
-      BpmDecr?: React.ReactNode;
-      BpmIncr?: React.ReactNode;
+      TrackButton?: React.ReactNode;
+      TrackButton1?: React.ReactNode;
+      TrackButton2?: React.ReactNode;
+      TrackButton3?: React.ReactNode;
     } & CommonProps<HTMLDivElement>
   ): JSX.Element;
-  BpmDecr: typeof BpmDecr;
-  BpmIncr: typeof BpmIncr;
+  TrackButton: typeof TrackButton;
+  TrackButton1: typeof TrackButton1;
+  TrackButton2: typeof TrackButton2;
+  TrackButton3: typeof TrackButton3;
 };
-export default Bpm;
+export default ExampleColumn;

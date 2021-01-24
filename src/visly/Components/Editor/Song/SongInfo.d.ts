@@ -92,7 +92,7 @@ const SongInfo: {
   (
     props: {
       text?: string;
-      trackFocus1?: string;
+      trackFocus?: string;
       ExistingTracks?: React.ReactNode | React.ReactNode[];
       SongControl?: React.ReactNode;
     } & CommonProps<HTMLDivElement>

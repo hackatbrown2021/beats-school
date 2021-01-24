@@ -141,8 +141,8 @@ function SongInfo(_props) {
                     }
                     key={"CJnPE7hAa5"}
                     text={
-                      exists(props.trackFocus1)
-                        ? props.trackFocus1
+                      exists(props.trackFocus)
+                        ? props.trackFocus
                         : getStyle("CJnPE7hAa5", "text")
                     }
                     element={getStyle("CJnPE7hAa5", "htmlElement")}

@@ -98,12 +98,13 @@ const SongControl: {
   Bpm: {
     (
       props: {
-        ControlButton?: React.ReactNode;
-        ControlButton1?: React.ReactNode;
+        text?: string;
+        BpmDecr?: React.ReactNode;
+        BpmIncr?: React.ReactNode;
       } & CommonProps<HTMLDivElement>
     ): JSX.Element;
-    ControlButton: typeof ControlButton;
-    ControlButton1: typeof ControlButton1;
+    BpmDecr: typeof BpmDecr;
+    BpmIncr: typeof BpmIncr;
   };
   Play: typeof Play;
 };

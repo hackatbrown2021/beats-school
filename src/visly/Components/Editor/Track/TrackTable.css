@@ -14,7 +14,16 @@
   align-content: flex-start;
   justify-content: flex-start;
 }
-.__visly_scope_3gFi4GmK8Q_KMs5mMpQoH .__visly_scope_3gFi4GmK8Q_CdHR4Fp5VU,
+.__visly_scope_3gFi4GmK8Q_KMs5mMpQoH .__visly_scope_3gFi4GmK8Q_CdHR4Fp5VU {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  align-content: flex-start;
+  justify-content: flex-start;
+}
+.__visly_scope_3gFi4GmK8Q_KMs5mMpQoH .__visly_scope_3gFi4GmK8Q_KhFuwgXjAr {
+  flex-direction: column;
+}
 .__visly_scope_3gFi4GmK8Q_KMs5mMpQoH .__visly_scope_3gFi4GmK8Q_HgCWTmknpr {
   flex-direction: column;
   flex-wrap: nowrap;
