@@ -8,6 +8,7 @@ import LoginPage from "./Pages/Login";
 import SignUpPage from "./Pages/SignUp";
 import ProfilePage from "./Pages/Profile";
 import LandingPage from "./Pages/Landing";
+import DashboardPage from "./Pages/Dashboard";
 import MusicApp from "./MusicApp.js";
 import { Route, Switch } from "react-router-dom";
 import { auth } from "./auth/firebase";
@@ -78,6 +79,7 @@ const App = () => {
       />
       <Switch>
         <Route path="/" component={LandingPage} exact />
+        <Route path="/dashboard" component={DashboardPage} />
         <Route path="/profile" component={ProfilePage} />
         <Route path="/music" component={MusicApp} />
         <Route path="/login" component={LoginPage} />

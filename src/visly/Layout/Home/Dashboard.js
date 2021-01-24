@@ -150,27 +150,37 @@ function Dashboard(_props) {
             element={getStyle("3wAXGzmZPS", "htmlElement")}
           />
         </ContainerPrimitive>,
-        props.Tabs === undefined ? (
-          <Tabs
-            key={"Tx8y1JmvZr"}
-            {...getCompositeDefaultProps("Tx8y1JmvZr")}
-            id="Tabs_Tx8y1JmvZr"
-            className="__visly_reset_7X7HTLRqyD __visly_scope_Eba28UUg9v_Tx8y1JmvZr"
-          />
-        ) : (
-          <TabsContext.Provider
-            key="Tx8y1JmvZr-provider"
-            value={{
-              key: "Tx8y1JmvZr",
-              id: "Tabs_Tx8y1JmvZr",
-              className:
-                "__visly_reset_7X7HTLRqyD __visly_scope_Eba28UUg9v_Tx8y1JmvZr",
-              ...getCompositeDefaultProps("Tx8y1JmvZr"),
-            }}
-          >
-            {props.Tabs}
-          </TabsContext.Provider>
-        ),
+        <ContainerPrimitive
+          id={"Container_Vzqo38UDhz"}
+          className={
+            "__visly_reset_7X7HTLRqyD __visly_scope_Eba28UUg9v_Vzqo38UDhz"
+          }
+          key={"Vzqo38UDhz"}
+          addSpacing={false}
+          element={getStyle("Vzqo38UDhz", "htmlElement")}
+        >
+          {props.Tabs === undefined ? (
+            <Tabs
+              key={"Tx8y1JmvZr"}
+              {...getCompositeDefaultProps("Tx8y1JmvZr")}
+              id="Tabs_Tx8y1JmvZr"
+              className="__visly_reset_7X7HTLRqyD __visly_scope_Eba28UUg9v_Tx8y1JmvZr"
+            />
+          ) : (
+            <TabsContext.Provider
+              key="Tx8y1JmvZr-provider"
+              value={{
+                key: "Tx8y1JmvZr",
+                id: "Tabs_Tx8y1JmvZr",
+                className:
+                  "__visly_reset_7X7HTLRqyD __visly_scope_Eba28UUg9v_Tx8y1JmvZr",
+                ...getCompositeDefaultProps("Tx8y1JmvZr"),
+              }}
+            >
+              {props.Tabs}
+            </TabsContext.Provider>
+          )}
+        </ContainerPrimitive>,
         props.SongList === undefined ? (
           <SongList
             key={"4h4ZqgPRUH"}

@@ -9,13 +9,11 @@ import {
   findSetVariantProps,
   makeCompositeDefaultProps,
 } from "../../_internal_utils";
-import { RootPrimitive } from "../../_internal_primitives";
-import { default as List, ListContext } from "../../List";
+import { RootPrimitive, ContainerPrimitive } from "../../_internal_primitives";
 import {
-  default as example1,
-  SongEntryContext as example1Context,
-  default as example2,
-  SongEntryContext as example2Context,
+  default as Example2,
+  default as Example3,
+  default as Example1,
 } from "../../Components/Song/SongEntry";
 
 const styles = [
@@ -34,22 +32,22 @@ const defaultPropValues = [
   {
     type: "default",
     layers: {
-      THfbQNH9y6: {},
-      "75cjkht8UM": {},
       LASPFQdSnN: {},
+      "8689fgACCR": {},
+      "75cjkht8UM": {},
     },
   },
   {
     type: "boolean",
     propName: "example",
     layers: {
-      THfbQNH9y6: {},
-      "75cjkht8UM": {},
       LASPFQdSnN: {
         none: {
           songName: "Laughing Dolphins",
         },
       },
+      "8689fgACCR": {},
+      "75cjkht8UM": {},
     },
   },
 ];
@@ -84,78 +82,23 @@ function SongList(_props) {
         activeVariants: activeVariants,
       }}
     >
-      {(getStyle) => [
-        props.example1 === undefined ? (
-          <example1
-            key={"75cjkht8UM"}
-            {...getCompositeDefaultProps("75cjkht8UM")}
-            id="example1_75cjkht8UM"
-            className="__visly_reset_7X7HTLRqyD __visly_scope_HCe4MVdiJL_75cjkht8UM"
-          />
-        ) : (
-          <example1Context.Provider
-            key="75cjkht8UM-provider"
-            value={{
-              key: "75cjkht8UM",
-              id: "example1_75cjkht8UM",
-              className:
-                "__visly_reset_7X7HTLRqyD __visly_scope_HCe4MVdiJL_75cjkht8UM",
-              ...getCompositeDefaultProps("75cjkht8UM"),
-            }}
-          >
-            {props.example1}
-          </example1Context.Provider>
-        ),
-        props.example2 === undefined ? (
-          <example2
-            key={"LASPFQdSnN"}
-            {...getCompositeDefaultProps("LASPFQdSnN")}
-            id="example2_LASPFQdSnN"
-            className="__visly_reset_7X7HTLRqyD __visly_scope_HCe4MVdiJL_LASPFQdSnN"
-          />
-        ) : (
-          <example2Context.Provider
-            key="LASPFQdSnN-provider"
-            value={{
-              key: "LASPFQdSnN",
-              id: "example2_LASPFQdSnN",
-              className:
-                "__visly_reset_7X7HTLRqyD __visly_scope_HCe4MVdiJL_LASPFQdSnN",
-              ...getCompositeDefaultProps("LASPFQdSnN"),
-            }}
-          >
-            {props.example2}
-          </example2Context.Provider>
-        ),
-        props.List === undefined ? (
-          <List
-            key={"THfbQNH9y6"}
-            {...getCompositeDefaultProps("THfbQNH9y6")}
-            id="List_THfbQNH9y6"
-            className="__visly_reset_7X7HTLRqyD __visly_scope_HCe4MVdiJL_THfbQNH9y6"
-          />
-        ) : (
-          <ListContext.Provider
-            key="THfbQNH9y6-provider"
-            value={{
-              key: "THfbQNH9y6",
-              id: "List_THfbQNH9y6",
-              className:
-                "__visly_reset_7X7HTLRqyD __visly_scope_HCe4MVdiJL_THfbQNH9y6",
-              ...getCompositeDefaultProps("THfbQNH9y6"),
-            }}
-          >
-            {props.List}
-          </ListContext.Provider>
-        ),
-      ]}
+      <ContainerPrimitive
+        key={"21G8uFsPjt"}
+        id={"Slot_21G8uFsPjt"}
+        className={
+          "__visly_reset_7X7HTLRqyD __visly_scope_HCe4MVdiJL_21G8uFsPjt"
+        }
+        addSpacing={false}
+      >
+        {props.children}
+      </ContainerPrimitive>
     </RootPrimitive>
   );
 }
 
-SongList.List = List;
-SongList.example1 = example1;
-SongList.example2 = example2;
+SongList.Example2 = Example2;
+SongList.Example3 = Example3;
+SongList.Example1 = Example1;
 SongList.__variants = [
   {
     name: "example",
