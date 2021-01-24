@@ -9,7 +9,8 @@ import {
   findSetVariantProps,
   makeCompositeDefaultProps,
 } from "../../_internal_utils";
-import { RootPrimitive } from "../../_internal_primitives";
+import { RootPrimitive, ContainerPrimitive } from "../../_internal_primitives";
+import * as icons from "../../icons";
 import {
   default as TrackTable,
   TrackTableContext,
@@ -18,6 +19,10 @@ import {
   default as SongInfo,
   SongInfoContext,
 } from "../../Components/Editor/Song/SongInfo";
+import {
+  default as SubmitButton,
+  ButtonContext as SubmitButtonContext,
+} from "../../Button";
 
 const styles = [
   {
@@ -32,6 +37,14 @@ const defaultPropValues = [
     layers: {
       "8DLWbwv9QP": {},
       LuHHHachra: {},
+      Uyf5C5sbD5: {
+        none: {
+          text: "Submit",
+          icon: icons.edit,
+          kind: "primary",
+          withIcon: true,
+        },
+      },
     },
   },
 ];
@@ -104,6 +117,37 @@ function Daw(_props) {
             {props.TrackTable}
           </TrackTableContext.Provider>
         ),
+        <ContainerPrimitive
+          id={"Container_RQw9aRs1Aw"}
+          className={
+            "__visly_reset_7X7HTLRqyD __visly_scope_SpTbokBXfn_RQw9aRs1Aw"
+          }
+          key={"RQw9aRs1Aw"}
+          addSpacing={false}
+          element={getStyle("RQw9aRs1Aw", "htmlElement")}
+        >
+          {props.SubmitButton === undefined ? (
+            <SubmitButton
+              key={"Uyf5C5sbD5"}
+              {...getCompositeDefaultProps("Uyf5C5sbD5")}
+              id="SubmitButton_Uyf5C5sbD5"
+              className="__visly_reset_7X7HTLRqyD __visly_scope_SpTbokBXfn_Uyf5C5sbD5"
+            />
+          ) : (
+            <SubmitButtonContext.Provider
+              key="Uyf5C5sbD5-provider"
+              value={{
+                key: "Uyf5C5sbD5",
+                id: "SubmitButton_Uyf5C5sbD5",
+                className:
+                  "__visly_reset_7X7HTLRqyD __visly_scope_SpTbokBXfn_Uyf5C5sbD5",
+                ...getCompositeDefaultProps("Uyf5C5sbD5"),
+              }}
+            >
+              {props.SubmitButton}
+            </SubmitButtonContext.Provider>
+          )}
+        </ContainerPrimitive>,
       ]}
     </RootPrimitive>
   );
@@ -111,6 +155,7 @@ function Daw(_props) {
 
 Daw.TrackTable = TrackTable;
 Daw.SongInfo = SongInfo;
+Daw.SubmitButton = SubmitButton;
 Daw.__variants = [];
 
 export default Daw;

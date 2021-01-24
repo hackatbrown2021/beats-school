@@ -16,7 +16,7 @@ import r_highhat from "../sounds/rock/r_HighHat.wav";
 import r_kick from "../sounds/rock/r_Kick.wav";
 import r_snare from "../sounds/rock/r_Snare.wav";
 
-import { auth, data } from "../auth/firebase";
+import { auth, data, firebase } from "../auth/firebase";
 import { useHistory, useParams } from "react-router-dom";
 
 const genEmptyTrack = (length) => {
@@ -35,6 +35,7 @@ export default () => {
   const history = useHistory();
   const [notes, setNotes] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
+  const [existingTracks, setExistingTracks] = React.useState([]);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [currentStepIndex, setCurrentStepIndex] = React.useState(0);
   const [songName, setSongName] = React.useState("Name");
@@ -47,14 +48,52 @@ export default () => {
   const [drumSteps, setDrumSteps] = React.useState(genEmptyTrack(SONG_LENGTH));
   const [bassSteps, setBassSteps] = React.useState(genEmptyTrack(SONG_LENGTH));
   let [user, setUser] = useState(null);
+  const { song_id } = useParams();
+
+  const submitTrack = () => {
+    if (user !== null) {
+      let trackData = null;
+      if (currentTrack === "melody") {
+        trackData = steps;
+      } else if (currentTrack === "drum") {
+        trackData = drumSteps;
+      } else if (currentTrack === "bass") {
+        trackData = bassSteps;
+      }
+
+      let finalStruc = {};
+      for (const [index, element] of trackData.entries()) {
+        finalStruc[index] = element;
+      }
+
+      data
+        .collection("tracks")
+        .doc()
+        .set({
+          song_id: song_id,
+          ts_added: firebase.firestore.FieldValue.serverTimestamp(),
+          type: currentTrack,
+          user_id: user.uid,
+          data: finalStruc,
+        })
+        .then(() => {
+          data
+            .collection("assignments")
+            .doc(user.uid)
+            .delete()
+            .then(() => {
+              history.push("/dashboard");
+            });
+        });
+    }
+    console.log("submit");
+  };
 
   useEffect(() => {
     auth.onAuthStateChanged((newUser) => {
       setUser(newUser);
     });
   });
-
-  const { song_id } = useParams();
 
   useEffect(() => {
     if (user !== null) {
@@ -64,6 +103,7 @@ export default () => {
         .get()
         .then((doc) => {
           const a_data = doc.data();
+          console.log(doc);
           if ((a_data === null) | (a_data.song_id !== song_id)) {
             history.push("/dashboard");
           } else {
@@ -86,14 +126,23 @@ export default () => {
                 console.log("finding tracks");
                 querySnapshot.forEach((doc) => {
                   const t_data = doc.data();
+
+                  const trackBeats = genEmptyTrack(SONG_LENGTH);
+                  for (const [key, value] of Object.entries(t_data.data)) {
+                    trackBeats[key].push(...value);
+                  }
+
                   console.log("track");
                   if (t_data.type === "melody") {
-                    setSteps(t_data.data);
+                    setSteps(trackBeats);
                   } else if (t_data.type === "drum") {
-                    setDrumSteps(t_data.data);
+                    setDrumSteps(trackBeats);
                   } else if (t_data.type === "bass") {
-                    setBassSteps(t_data.data);
+                    setBassSteps(trackBeats);
                   }
+                  let newTracks = [...existingTracks];
+                  newTracks.push(t_data.type);
+                  setExistingTracks(newTracks);
                 });
               });
           }
@@ -194,6 +243,7 @@ export default () => {
   return (
     <>
       <Daw
+        SubmitButton={<Daw.SubmitButton onPress={submitTrack} />}
         TrackTable={
           <>
             <Daw.TrackTable
@@ -276,8 +326,11 @@ export default () => {
             text={songName}
             trackFocus={currentTrack}
             ExistingTracks={
-              <ul>{/* <li>melody</li>
-                <li>beat</li> */}</ul>
+              <ul>
+                {existingTracks.map((o) => (
+                  <li>{o}</li>
+                ))}
+              </ul>
             }
             SongControl={
               <Daw.SongInfo.SongControl

@@ -3,6 +3,7 @@
 /* eslint-disable */
 import { default as TrackTable } from "./Track/TrackTable";
 import { default as SongInfo } from "./Song/SongInfo";
+import { default as SubmitButton } from "../../Button";
 import React from "react";
 export interface CommonProps<T extends HTMLElement> {
   className?: string;
@@ -94,9 +95,11 @@ const Daw: {
     props: {
       TrackTable?: React.ReactNode;
       SongInfo?: React.ReactNode;
+      SubmitButton?: React.ReactNode;
     } & CommonProps<HTMLDivElement>
   ): JSX.Element;
   TrackTable: typeof TrackTable;
   SongInfo: typeof SongInfo;
+  SubmitButton: typeof SubmitButton;
 };
 export default Daw;
