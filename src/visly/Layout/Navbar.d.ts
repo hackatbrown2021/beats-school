@@ -2,6 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 import { default as SignIn } from "../Components/Navbar/SignIn";
+import { default as DashboardButton } from "../Button";
+import { default as Logo } from "../Components/Navbar/Logo";
 import React from "react";
 export interface CommonProps<T extends HTMLElement> {
   className?: string;
@@ -91,11 +93,14 @@ export interface CommonProps<T extends HTMLElement> {
 const Navbar: {
   (
     props: {
-      imageSrc?: string;
       AccountButton?: React.ReactNode | React.ReactNode[];
       example?: boolean;
+      DashboardButton?: React.ReactNode;
+      Logo?: React.ReactNode;
     } & CommonProps<HTMLDivElement>
   ): JSX.Element;
   SignIn: typeof SignIn;
+  DashboardButton: typeof DashboardButton;
+  Logo: typeof Logo;
 };
 export default Navbar;

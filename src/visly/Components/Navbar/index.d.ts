@@ -2,5 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 import Account from "./Account";
+import Logo from "./Logo";
 import SignIn from "./SignIn";
-export { Account, SignIn };
+export { Account, Logo, SignIn };

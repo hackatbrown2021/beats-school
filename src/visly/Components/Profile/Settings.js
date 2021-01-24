@@ -14,7 +14,13 @@ import {
   TextPrimitive,
   ContainerPrimitive,
 } from "../../_internal_primitives";
-import { default as Button, ButtonContext } from "../../Button";
+import * as icons from "../../icons";
+import {
+  default as Update,
+  ButtonContext as UpdateContext,
+  default as SignOut,
+  ButtonContext as SignOutContext,
+} from "../../Button";
 import {
   default as Name,
   InputContext as NameContext,
@@ -56,7 +62,15 @@ const defaultPropValues = [
       },
       "47yRWFbghA": {
         none: {
-          placeholder: "Jane Doe",
+          placeholder: "jane@example.com",
+        },
+      },
+      NZm81ZnpQv: {
+        none: {
+          text: "Sign Out",
+          icon: icons.alertTriangle,
+          kind: "danger",
+          withIcon: true,
         },
       },
     },
@@ -105,7 +119,7 @@ function Settings(_props) {
                 "__visly_reset_7X7HTLRqyD __visly_scope_Hez1oCiZ3N_R8RdFbdKkf"
               }
               key={"R8RdFbdKkf"}
-              addSpacing={false}
+              addSpacing={true}
               element={getStyle("R8RdFbdKkf", "htmlElement")}
             >
               <TextPrimitive
@@ -191,26 +205,57 @@ function Settings(_props) {
             addSpacing={false}
             element={getStyle("2SrtPbtkds", "htmlElement")}
           >
-            {props.Button === undefined ? (
-              <Button
+            {props.Update === undefined ? (
+              <Update
                 key={"ARV5v7xQn1"}
                 {...getCompositeDefaultProps("ARV5v7xQn1")}
-                id="Button_ARV5v7xQn1"
+                id="Update_ARV5v7xQn1"
                 className="__visly_reset_7X7HTLRqyD __visly_scope_Hez1oCiZ3N_ARV5v7xQn1"
               />
             ) : (
-              <ButtonContext.Provider
+              <UpdateContext.Provider
                 key="ARV5v7xQn1-provider"
                 value={{
                   key: "ARV5v7xQn1",
-                  id: "Button_ARV5v7xQn1",
+                  id: "Update_ARV5v7xQn1",
                   className:
                     "__visly_reset_7X7HTLRqyD __visly_scope_Hez1oCiZ3N_ARV5v7xQn1",
                   ...getCompositeDefaultProps("ARV5v7xQn1"),
                 }}
               >
-                {props.Button}
-              </ButtonContext.Provider>
+                {props.Update}
+              </UpdateContext.Provider>
+            )}
+          </ContainerPrimitive>
+          <ContainerPrimitive
+            id={"Container_6MT26VhMNP"}
+            className={
+              "__visly_reset_7X7HTLRqyD __visly_scope_Hez1oCiZ3N_6MT26VhMNP"
+            }
+            key={"6MT26VhMNP"}
+            addSpacing={false}
+            element={getStyle("6MT26VhMNP", "htmlElement")}
+          >
+            {props.SignOut === undefined ? (
+              <SignOut
+                key={"NZm81ZnpQv"}
+                {...getCompositeDefaultProps("NZm81ZnpQv")}
+                id="SignOut_NZm81ZnpQv"
+                className="__visly_reset_7X7HTLRqyD __visly_scope_Hez1oCiZ3N_NZm81ZnpQv"
+              />
+            ) : (
+              <SignOutContext.Provider
+                key="NZm81ZnpQv-provider"
+                value={{
+                  key: "NZm81ZnpQv",
+                  id: "SignOut_NZm81ZnpQv",
+                  className:
+                    "__visly_reset_7X7HTLRqyD __visly_scope_Hez1oCiZ3N_NZm81ZnpQv",
+                  ...getCompositeDefaultProps("NZm81ZnpQv"),
+                }}
+              >
+                {props.SignOut}
+              </SignOutContext.Provider>
             )}
           </ContainerPrimitive>
         </>
@@ -219,9 +264,10 @@ function Settings(_props) {
   );
 }
 
-Settings.Button = Button;
+Settings.Update = Update;
 Settings.Name = Name;
 Settings.Bio = Bio;
+Settings.SignOut = SignOut;
 Settings.__variants = [];
 
 export default Settings;

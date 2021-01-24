@@ -26,7 +26,7 @@ const defaultPropValues = [
     layers: {
       "3nbXUv6VoL": {
         none: {
-          text: "SignIn",
+          text: "Sign In",
           icon: icons.externalLink,
           kind: "secondary",
           withIcon: true,

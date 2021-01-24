@@ -50,6 +50,22 @@
   justify-content: flex-start;
   padding: 0 0 0 4px;
 }
+.__visly_scope_Hez1oCiZ3N_SnqYQ3m7Vh
+  .__visly_scope_Hez1oCiZ3N_R8RdFbdKkf
+  > .__visly_spacing {
+  width: auto;
+  height: 0;
+  position: relative;
+  padding: 2px 0;
+}
+.__visly_scope_Hez1oCiZ3N_SnqYQ3m7Vh
+  .__visly_scope_Hez1oCiZ3N_R8RdFbdKkf
+  > .__visly_spacing::after {
+  content: "";
+  position: absolute;
+  margin-left: 0;
+  width: 100%;
+}
 .__visly_scope_Hez1oCiZ3N_SnqYQ3m7Vh .__visly_scope_Hez1oCiZ3N_R8RdFbdKkf {
   flex-direction: column;
   flex-wrap: nowrap;
@@ -70,4 +86,15 @@
   letter-spacing: 0;
   flex-shrink: 1;
   display: block;
+}
+.__visly_scope_Hez1oCiZ3N_SnqYQ3m7Vh .__visly_scope_Hez1oCiZ3N_6MT26VhMNP {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: flex-start;
+  justify-content: center;
+  padding: 20px 0 0;
+}
+.__visly_scope_Hez1oCiZ3N_SnqYQ3m7Vh .__visly_scope_Hez1oCiZ3N_NZm81ZnpQv {
+  max-width: 100px;
 }

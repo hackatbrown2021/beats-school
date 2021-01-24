@@ -1,28 +1,81 @@
+import { useEffect, useState } from "react";
 import logo from "./images/title.png";
 import "./App.css";
-import SignIn from "./visly/Components/Navbar/SignIn";
-import Account from "./visly/Components/Navbar/Account";
+import { SignIn } from "./visly/Components/Navbar/";
+import { Account } from "./visly/Components/Navbar/";
 import Navbar from "./visly/Layout/Navbar";
 import LoginPage from "./Pages/Login";
+import ProfilePage from "./Pages/Profile";
 import LandingPage from "./Pages/Landing";
 import MusicApp from "./MusicApp.js";
 import { Route, Switch } from "react-router-dom";
+import { auth } from "./auth/firebase";
+import { useHistory } from "react-router-dom";
 
-function App() {
-  var authenticated = true;
+const App = () => {
+  const history = useHistory();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((newUser) => {
+      setUser(newUser);
+    });
+  });
+
   return (
     <main>
       <Navbar
-        imageSrc={logo}
-        AccountButton={authenticated ? <Account /> : <SignIn />}
+        Logo={
+          <Navbar.Logo
+            imageSrc={logo}
+            onClick={() => {
+              history.push("/");
+            }}
+          />
+        }
+        DashboardButton={
+          user == null ? (
+            <div></div>
+          ) : (
+            <Navbar.DashboardButton
+              onClick={() => {
+                history.push("/dashboard");
+              }}
+            />
+          )
+        }
+        AccountButton={
+          user == null ? (
+            <SignIn
+              Button={
+                <SignIn.Button
+                  onClick={() => {
+                    history.push("/login");
+                  }}
+                />
+              }
+            />
+          ) : (
+            <Account
+              Button={
+                <Account.Button
+                  onClick={() => {
+                    history.push("/profile");
+                  }}
+                />
+              }
+            />
+          )
+        }
       />
       <Switch>
         <Route path="/" component={LandingPage} exact />
+        <Route path="/profile" component={ProfilePage} />
         <Route path="/music" component={MusicApp} />
         <Route path="/login" component={LoginPage} />
       </Switch>
     </main>
   );
-}
+};
 
 export default App;

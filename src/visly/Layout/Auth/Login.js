@@ -6,6 +6,7 @@ import "../../reset.css";
 import "./Login.css";
 import React, { createContext, useContext } from "react";
 import {
+  exists,
   findSetVariantProps,
   makeCompositeDefaultProps,
 } from "../../_internal_utils";
@@ -31,6 +32,11 @@ const styles = [
         none: {
           text: "Hi! Welcome back",
           htmlElement: "h2",
+        },
+      },
+      "3L1RBJrF1V": {
+        none: {
+          text: "",
         },
       },
     },
@@ -172,6 +178,17 @@ function Login(_props) {
             </ButtonContext.Provider>
           )}
         </ContainerPrimitive>,
+        <TextPrimitive
+          id={"Text_3L1RBJrF1V"}
+          className={
+            "__visly_reset_7X7HTLRqyD __visly_scope_Ub4BUgj6bV_3L1RBJrF1V"
+          }
+          key={"3L1RBJrF1V"}
+          text={
+            exists(props.error) ? props.error : getStyle("3L1RBJrF1V", "text")
+          }
+          element={getStyle("3L1RBJrF1V", "htmlElement")}
+        />,
       ]}
     </RootPrimitive>
   );
