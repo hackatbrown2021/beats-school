@@ -27,7 +27,6 @@ const genEmptyTrack = (length) => {
 };
 
 const beatSelected = (instrumentSteps, note, step) => {
-  console.log(instrumentSteps);
   return instrumentSteps[step].includes(note);
 };
 
@@ -90,7 +89,7 @@ export default () => {
     if (!tempArray[measureNum].includes(key)) {
       tempArray[measureNum] = tempArray[measureNum].concat(key);
     } else {
-      var psn = tempArray.indexOf(key);
+      var psn = tempArray[measureNum].indexOf(key);
       tempArray[measureNum].splice(psn, 1);
     }
     setSteps(tempArray);
@@ -101,7 +100,7 @@ export default () => {
     if (!tempArray[measureNum].includes(key)) {
       tempArray[measureNum] = tempArray[measureNum].concat(key);
     } else {
-      var psn = tempArray.indexOf(key);
+      var psn = tempArray[measureNum].indexOf(key);
       tempArray[measureNum].splice(psn, 1);
     }
     setDrumSteps(tempArray);
@@ -112,7 +111,7 @@ export default () => {
     if (!tempArray[measureNum].includes(key)) {
       tempArray[measureNum] = tempArray[measureNum].concat(key);
     } else {
-      var psn = tempArray.indexOf(key);
+      var psn = tempArray[measureNum].indexOf(key);
       tempArray[measureNum].splice(psn, 1);
     }
     setBassSteps(tempArray);
