@@ -45,35 +45,35 @@ export default () => {
   const [bassSteps, setBassSteps] = React.useState(genEmptyTrack(SONG_LENGTH));
 
   const keysAvailable = [
-    "C3",
-    "C#3",
-    "D3",
-    "D#3",
-    "E3",
-    "F3",
-    "F#3",
-    "G3",
-    "G#3",
-    "A3",
-    "A#3",
     "B3",
+    "A#3",
+    "A3",
+    "G#3",
+    "G3",
+    "F#3",
+    "F3",
+    "E3",
+    "D#3",
+    "D3",
+    "C#3",
+    "C3",
   ];
 
   const drumKeysAvailable = ["D17", "D18", "D19", "D20", "D21", "D22"];
 
   const bassKeysAvailable = [
-    "A0",
-    "A#0",
-    "B0",
-    "C1",
-    "C#1",
-    "D1",
-    "D#1",
-    "E1",
-    "F1",
-    "F#1",
-    "G1",
     "G#1",
+    "G1",
+    "F#1",
+    "F1",
+    "E1",
+    "D#1",
+    "D1",
+    "C#1",
+    "C1",
+    "B0",
+    "A#0",
+    "A0",
   ];
 
   const beatLabels = [...new Array(SONG_LENGTH).keys()].map((val) => {
