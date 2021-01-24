@@ -27,7 +27,7 @@ const styles = [
     layers: {
       "7GKntRiYeh": {
         none: {
-          text: "Welcome Back,",
+          text: "Welcome Back!",
           htmlElement: "h1",
         },
       },
