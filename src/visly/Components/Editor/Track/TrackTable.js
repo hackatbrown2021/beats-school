@@ -13,6 +13,10 @@ import {
   RootPrimitive,
   ContainerPrimitive,
 } from "../../../_internal_primitives";
+import {
+  default as BeatLabel,
+  BeatLabelContext,
+} from "../../../Components/Editor/Track/BeatLabel";
 
 const styles = [
   {
@@ -24,7 +28,13 @@ const styles = [
 const defaultPropValues = [
   {
     type: "default",
-    layers: {},
+    layers: {
+      W2zUvdGDZr: {
+        none: {
+          text: " ",
+        },
+      },
+    },
   },
 ];
 
@@ -63,75 +73,109 @@ function TrackTable(_props) {
           addSpacing={false}
           element={getStyle("HgCWTmknpr", "htmlElement")}
         >
-          <ContainerPrimitive
-            id={"Container_TA1r5pvd5a"}
-            className={
-              "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_TA1r5pvd5a"
-            }
-            key={"TA1r5pvd5a"}
-            addSpacing={false}
-            element={getStyle("TA1r5pvd5a", "htmlElement")}
-          >
-            {
+          {
+            <ContainerPrimitive
+              id={"Container_2jYR5JgRKo"}
+              className={
+                "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_2jYR5JgRKo"
+              }
+              key={"2jYR5JgRKo"}
+              addSpacing={false}
+              element={getStyle("2jYR5JgRKo", "htmlElement")}
+            >
               <ContainerPrimitive
-                key={"7qgkNAeTiz"}
-                id={"Slot_7qgkNAeTiz"}
+                id={"Container_Uu8tbiUzS5"}
                 className={
-                  "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_7qgkNAeTiz"
+                  "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_Uu8tbiUzS5"
                 }
+                key={"Uu8tbiUzS5"}
                 addSpacing={false}
+                element={getStyle("Uu8tbiUzS5", "htmlElement")}
               >
-                {props.Markers}
+                {[
+                  props.BeatLabel === undefined ? (
+                    <BeatLabel
+                      key={"W2zUvdGDZr"}
+                      {...getCompositeDefaultProps("W2zUvdGDZr")}
+                      id="BeatLabel_W2zUvdGDZr"
+                      className="__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_W2zUvdGDZr"
+                    />
+                  ) : (
+                    <BeatLabelContext.Provider
+                      key="W2zUvdGDZr-provider"
+                      value={{
+                        key: "W2zUvdGDZr",
+                        id: "BeatLabel_W2zUvdGDZr",
+                        className:
+                          "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_W2zUvdGDZr",
+                        ...getCompositeDefaultProps("W2zUvdGDZr"),
+                      }}
+                    >
+                      {props.BeatLabel}
+                    </BeatLabelContext.Provider>
+                  ),
+                  <ContainerPrimitive
+                    key={"KhFuwgXjAr"}
+                    id={"Slot_KhFuwgXjAr"}
+                    className={
+                      "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_KhFuwgXjAr"
+                    }
+                    addSpacing={false}
+                  >
+                    {props.Notes}
+                  </ContainerPrimitive>,
+                ]}
               </ContainerPrimitive>
-            }
-          </ContainerPrimitive>
-          <ContainerPrimitive
-            id={"Container_2jYR5JgRKo"}
-            className={
-              "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_2jYR5JgRKo"
-            }
-            key={"2jYR5JgRKo"}
-            addSpacing={false}
-            element={getStyle("2jYR5JgRKo", "htmlElement")}
-          >
-            <ContainerPrimitive
-              key={"KhFuwgXjAr"}
-              id={"Slot_KhFuwgXjAr"}
-              className={
-                "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_KhFuwgXjAr"
-              }
-              addSpacing={false}
-            >
-              {props.Notes}
+              <ContainerPrimitive
+                id={"Container_LZDRzAGv4p"}
+                className={
+                  "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_LZDRzAGv4p"
+                }
+                key={"LZDRzAGv4p"}
+                addSpacing={false}
+                element={getStyle("LZDRzAGv4p", "htmlElement")}
+              >
+                <ContainerPrimitive
+                  key={"7qgkNAeTiz"}
+                  id={"Slot_7qgkNAeTiz"}
+                  className={
+                    "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_7qgkNAeTiz"
+                  }
+                  addSpacing={false}
+                >
+                  {props.Markers}
+                </ContainerPrimitive>
+                <ContainerPrimitive
+                  key={"DxgerYMx4b"}
+                  id={"Slot_DxgerYMx4b"}
+                  className={
+                    "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_DxgerYMx4b"
+                  }
+                  addSpacing={false}
+                >
+                  {props.Grid}
+                </ContainerPrimitive>
+              </ContainerPrimitive>
+              <ContainerPrimitive
+                id={"Container_CdHR4Fp5VU"}
+                className={
+                  "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_CdHR4Fp5VU"
+                }
+                key={"CdHR4Fp5VU"}
+                addSpacing={false}
+                element={getStyle("CdHR4Fp5VU", "htmlElement")}
+              >
+                {null}
+              </ContainerPrimitive>
             </ContainerPrimitive>
-            <ContainerPrimitive
-              key={"DxgerYMx4b"}
-              id={"Slot_DxgerYMx4b"}
-              className={
-                "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_DxgerYMx4b"
-              }
-              addSpacing={false}
-            >
-              {props.Grid}
-            </ContainerPrimitive>
-            <ContainerPrimitive
-              id={"Container_CdHR4Fp5VU"}
-              className={
-                "__visly_reset_7X7HTLRqyD __visly_scope_3gFi4GmK8Q_CdHR4Fp5VU"
-              }
-              key={"CdHR4Fp5VU"}
-              addSpacing={false}
-              element={getStyle("CdHR4Fp5VU", "htmlElement")}
-            >
-              {null}
-            </ContainerPrimitive>
-          </ContainerPrimitive>
+          }
         </ContainerPrimitive>
       )}
     </RootPrimitive>
   );
 }
 
+TrackTable.BeatLabel = BeatLabel;
 TrackTable.__variants = [];
 
 export default TrackTable;

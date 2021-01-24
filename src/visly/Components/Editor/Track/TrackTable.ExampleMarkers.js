@@ -11,8 +11,6 @@ import {
 } from "../../../_internal_utils";
 import { RootPrimitive } from "../../../_internal_primitives";
 import {
-  default as BeatLabel,
-  BeatLabelContext,
   default as BeatLabel1,
   BeatLabelContext as BeatLabel1Context,
   default as BeatLabel2,
@@ -58,11 +56,6 @@ const defaultPropValues = [
   {
     type: "default",
     layers: {
-      "31i8Db25ya": {
-        none: {
-          text: " ",
-        },
-      },
       Psd8fQXP96: {
         none: {
           text: "1",
@@ -173,27 +166,6 @@ function ExampleMarkers(_props) {
       }}
     >
       {(getStyle) => [
-        props.BeatLabel === undefined ? (
-          <BeatLabel
-            key={"31i8Db25ya"}
-            {...getCompositeDefaultProps("31i8Db25ya")}
-            id="BeatLabel_31i8Db25ya"
-            className="__visly_reset_7X7HTLRqyD __visly_scope_vJRy1U3pK4_31i8Db25ya"
-          />
-        ) : (
-          <BeatLabelContext.Provider
-            key="31i8Db25ya-provider"
-            value={{
-              key: "31i8Db25ya",
-              id: "BeatLabel_31i8Db25ya",
-              className:
-                "__visly_reset_7X7HTLRqyD __visly_scope_vJRy1U3pK4_31i8Db25ya",
-              ...getCompositeDefaultProps("31i8Db25ya"),
-            }}
-          >
-            {props.BeatLabel}
-          </BeatLabelContext.Provider>
-        ),
         props.BeatLabel1 === undefined ? (
           <BeatLabel1
             key={"Psd8fQXP96"}
@@ -535,7 +507,6 @@ function ExampleMarkers(_props) {
   );
 }
 
-ExampleMarkers.BeatLabel = BeatLabel;
 ExampleMarkers.BeatLabel1 = BeatLabel1;
 ExampleMarkers.BeatLabel2 = BeatLabel2;
 ExampleMarkers.BeatLabel3 = BeatLabel3;

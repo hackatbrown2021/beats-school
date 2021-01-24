@@ -6,6 +6,7 @@ import {
   TrackLabel,
   TrackButton,
   TrackColumn,
+  BeatLabel,
 } from "../visly/Components/Editor/Track";
 import hh_highhat from "../sounds/hiphop/hh_HighHat.wav";
 import hh_kick from "../sounds/hiphop/hh_Kick.wav";
@@ -70,6 +71,15 @@ export default () => {
     "G#1",
   ];
 
+  const beatLabels = [...new Array(SONG_LENGTH).keys()].map((val) => {
+    const beat = val + 1;
+    if (beat % 4 != 1) {
+      return "";
+    } else {
+      return "".concat(beat);
+    }
+  });
+
   const handleClick = (key, measureNum) => {
     var tempArray = steps;
     if (!tempArray[measureNum].includes(key)) {
@@ -129,6 +139,16 @@ export default () => {
                   {keysAvailable.map((i) => (
                     <TrackLabel text={i} />
                   ))}
+
+                  <TrackLabel text={"Hip-Hop High Hat"} />
+                  <TrackLabel text={"Hip-Hop Kick"} />
+                  <TrackLabel text={"Hip-Hop Snare"} />
+                  <TrackLabel text={"Rock High Hat"} />
+                  <TrackLabel text={"Rock Kick"} />
+                  <TrackLabel text={"Rock Snare"} />
+                  {bassKeysAvailable.map((i) => (
+                    <TrackLabel text={i} />
+                  ))}
                 </>
               }
               Grid={
@@ -158,55 +178,12 @@ export default () => {
                             onClick={() => handleClick(i, j)}
                           />
                         ))}
-                      </TrackColumn>
-                    </>
-                  ))}
-                </>
-              }
-              Markers={<></>}
-            />
-            <Daw.TrackTable
-              Notes={
-                <>
-                  <TrackLabel text={"Hip-Hop High Hat"} />
-                  <TrackLabel text={"Hip-Hop Kick"} />
-                  <TrackLabel text={"Hip-Hop Snare"} />
-                  <TrackLabel text={"Rock High Hat"} />
-                  <TrackLabel text={"Rock Kick"} />
-                  <TrackLabel text={"Rock Snare"} />
-                </>
-              }
-              Grid={
-                <>
-                  {[...Array(SONG_LENGTH).keys()].map((j) => (
-                    <>
-                      <TrackColumn>
                         {drumKeysAvailable.map((i) => (
                           <TrackButton
                             key={"".concat(i).concat(j)}
                             onClick={() => drumHandleClick(i, j)}
                           />
                         ))}
-                      </TrackColumn>
-                    </>
-                  ))}
-                </>
-              }
-              Markers={<></>}
-            />
-            <Daw.TrackTable
-              Notes={
-                <>
-                  {bassKeysAvailable.map((i) => (
-                    <TrackLabel text={i} />
-                  ))}
-                </>
-              }
-              Grid={
-                <>
-                  {[...Array(SONG_LENGTH).keys()].map((j) => (
-                    <>
-                      <TrackColumn>
                         {bassKeysAvailable.map((i) => (
                           <TrackButton
                             key={"".concat(i).concat(j)}
@@ -218,7 +195,9 @@ export default () => {
                   ))}
                 </>
               }
-              Markers={<></>}
+              Markers={beatLabels.map((label) => (
+                <BeatLabel text={label} />
+              ))}
             />
           </>
         }

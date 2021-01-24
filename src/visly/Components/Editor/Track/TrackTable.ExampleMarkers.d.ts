@@ -2,7 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 import {
-  default as BeatLabel,
   default as BeatLabel1,
   default as BeatLabel2,
   default as BeatLabel3,
@@ -109,7 +108,6 @@ export interface CommonProps<T extends HTMLElement> {
 const ExampleMarkers: {
   (
     props: {
-      BeatLabel?: React.ReactNode;
       BeatLabel1?: React.ReactNode;
       BeatLabel2?: React.ReactNode;
       BeatLabel3?: React.ReactNode;
@@ -128,7 +126,6 @@ const ExampleMarkers: {
       BeatLabel10111111?: React.ReactNode;
     } & CommonProps<HTMLDivElement>
   ): JSX.Element;
-  BeatLabel: typeof BeatLabel;
   BeatLabel1: typeof BeatLabel1;
   BeatLabel2: typeof BeatLabel2;
   BeatLabel3: typeof BeatLabel3;
