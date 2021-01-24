@@ -16,6 +16,7 @@ import {
   ControlButtonContext as PlayContext,
 } from "../../../Components/Editor/Song/ControlButton";
 import { default as Bpm } from "./SongControl.Bpm";
+import { default as Volume } from "./SongControl.Volume";
 
 const styles = [
   {
@@ -92,6 +93,18 @@ function SongControl(_props) {
           key={"G22h4Vy3yE"}
         />,
         props.Bpm === undefined ? <Bpm key={"EUwHj7tQkP"} /> : props.Bpm,
+        <SpacerPrimitive
+          id={"Spacer_3f6KfreV4D"}
+          className={
+            "__visly_reset_7X7HTLRqyD __visly_scope_3kuoye9wrG_3f6KfreV4D"
+          }
+          key={"3f6KfreV4D"}
+        />,
+        props.Volume === undefined ? (
+          <Volume key={"95D8MgHt4N"} />
+        ) : (
+          props.Volume
+        ),
       ]}
     </RootPrimitive>
   );

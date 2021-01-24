@@ -4,10 +4,12 @@
 import component_0 from "./ControlButton";
 import component_1 from "./SongControl";
 import component_2 from "./SongControl.Bpm";
-import component_3 from "./SongInfo";
-import component_4 from "./SongInfo.ExampleTracks";
+import component_3 from "./SongControl.Volume";
+import component_4 from "./SongInfo";
+import component_5 from "./SongInfo.ExampleTracks";
 export const ControlButton = component_0;
 export const SongControl = component_1;
-export const SongInfo = component_3;
+export const SongInfo = component_4;
 SongControl.Bpm = component_2;
-SongInfo.ExampleTracks = component_4;
+SongControl.Volume = component_3;
+SongInfo.ExampleTracks = component_5;

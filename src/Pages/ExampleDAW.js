@@ -329,42 +329,42 @@ export default () => {
                   />
                 }
                 Bpm={
-                  <>
-                    <Daw.SongInfo.SongControl.Bpm
-                      text={"BPM: ".concat(BPM)} // need to implement state
-                      BpmDecr={
-                        <SongControl.Bpm.BpmDecr
-                          onClick={() => {
-                            adjustBPM(-5);
-                          }}
-                        />
-                      }
-                      BpmIncr={
-                        <SongControl.Bpm.BpmIncr
-                          onClick={() => {
-                            adjustBPM(5);
-                          }}
-                        />
-                      }
-                    />
-                    <Daw.SongInfo.SongControl.Bpm
-                      text={"Volume: ".concat(volumeLevel + 10)} // need to implement state
-                      BpmDecr={
-                        <SongControl.Bpm.BpmDecr
-                          onClick={() => {
-                            adjustVol(-1);
-                          }}
-                        />
-                      }
-                      BpmIncr={
-                        <SongControl.Bpm.BpmIncr
-                          onClick={() => {
-                            adjustVol(1);
-                          }}
-                        />
-                      }
-                    />
-                  </>
+                  <Daw.SongInfo.SongControl.Bpm
+                    text={"BPM: ".concat(BPM)} // need to implement state
+                    BpmDecr={
+                      <SongControl.Bpm.BpmDecr
+                        onClick={() => {
+                          adjustBPM(-5);
+                        }}
+                      />
+                    }
+                    BpmIncr={
+                      <SongControl.Bpm.BpmIncr
+                        onClick={() => {
+                          adjustBPM(5);
+                        }}
+                      />
+                    }
+                  />
+                }
+                Volume={
+                  <Daw.SongInfo.SongControl.Volume
+                    text={"Vol: ".concat(volumeLevel + 10).concat(" db")} // need to implement state
+                    VolDecr={
+                      <SongControl.Volume.VolDecr
+                        onClick={() => {
+                          adjustVol(-1);
+                        }}
+                      />
+                    }
+                    VolIncr={
+                      <SongControl.Volume.VolIncr
+                        onClick={() => {
+                          adjustVol(1);
+                        }}
+                      />
+                    }
+                  />
                 }
               />
             }
