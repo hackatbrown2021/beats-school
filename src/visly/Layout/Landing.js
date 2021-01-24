@@ -10,23 +10,12 @@ import {
   findSetVariantProps,
   makeCompositeDefaultProps,
 } from "../_internal_utils";
-import {
-  RootPrimitive,
-  ImagePrimitive,
-  TextPrimitive,
-  ContainerPrimitive,
-} from "../_internal_primitives";
+import { RootPrimitive, ImagePrimitive } from "../_internal_primitives";
 
 const styles = [
   {
     type: "default",
-    layers: {
-      Rhtn315AoC: {
-        none: {
-          text: "Beat School",
-        },
-      },
-    },
+    layers: {},
   },
   {
     type: "boolean",
@@ -78,42 +67,19 @@ function Landing(_props) {
       }}
     >
       {(getStyle) => (
-        <>
-          <ContainerPrimitive
-            id={"Container_D7HJQkH2Bb"}
-            className={
-              "__visly_reset_7X7HTLRqyD __visly_scope_66HuVt3A5E_D7HJQkH2Bb"
-            }
-            key={"D7HJQkH2Bb"}
-            addSpacing={false}
-            element={getStyle("D7HJQkH2Bb", "htmlElement")}
-          >
-            {
-              <ImagePrimitive
-                id={"Image_Cb9Dw6hbfB"}
-                className={
-                  "__visly_reset_7X7HTLRqyD __visly_scope_66HuVt3A5E_Cb9Dw6hbfB"
-                }
-                key={"Cb9Dw6hbfB"}
-                src={
-                  exists(props.imageSrc)
-                    ? props.imageSrc
-                    : getStyle("Cb9Dw6hbfB", "src")
-                }
-                alt={getStyle("Cb9Dw6hbfB", "alternateText")}
-              />
-            }
-          </ContainerPrimitive>
-          <TextPrimitive
-            id={"Text_Rhtn315AoC"}
-            className={
-              "__visly_reset_7X7HTLRqyD __visly_scope_66HuVt3A5E_Rhtn315AoC"
-            }
-            key={"Rhtn315AoC"}
-            text={getStyle("Rhtn315AoC", "text")}
-            element={getStyle("Rhtn315AoC", "htmlElement")}
-          />
-        </>
+        <ImagePrimitive
+          id={"Image_Cb9Dw6hbfB"}
+          className={
+            "__visly_reset_7X7HTLRqyD __visly_scope_66HuVt3A5E_Cb9Dw6hbfB"
+          }
+          key={"Cb9Dw6hbfB"}
+          src={
+            exists(props.imageSrc)
+              ? props.imageSrc
+              : getStyle("Cb9Dw6hbfB", "src")
+          }
+          alt={getStyle("Cb9Dw6hbfB", "alternateText")}
+        />
       )}
     </RootPrimitive>
   );
