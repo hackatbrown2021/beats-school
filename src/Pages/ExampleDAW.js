@@ -26,6 +26,11 @@ const genEmptyTrack = (length) => {
   return track;
 };
 
+const beatSelected = (instrumentSteps, note, step) => {
+  console.log(instrumentSteps);
+  return instrumentSteps[step].includes(note);
+};
+
 export default () => {
   const [notes, setNotes] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
@@ -81,7 +86,7 @@ export default () => {
   });
 
   const handleClick = (key, measureNum) => {
-    var tempArray = steps;
+    var tempArray = [...steps];
     if (!tempArray[measureNum].includes(key)) {
       tempArray[measureNum] = tempArray[measureNum].concat(key);
     } else {
@@ -92,7 +97,7 @@ export default () => {
   };
 
   const drumHandleClick = (key, measureNum) => {
-    var tempArray = drumSteps;
+    var tempArray = [...drumSteps];
     if (!tempArray[measureNum].includes(key)) {
       tempArray[measureNum] = tempArray[measureNum].concat(key);
     } else {
@@ -103,7 +108,7 @@ export default () => {
   };
 
   const bassHandleClick = (key, measureNum) => {
-    var tempArray = bassSteps;
+    var tempArray = [...bassSteps];
     if (!tempArray[measureNum].includes(key)) {
       tempArray[measureNum] = tempArray[measureNum].concat(key);
     } else {
@@ -176,18 +181,21 @@ export default () => {
                           <TrackButton
                             key={"".concat(i).concat(j)}
                             onClick={() => handleClick(i, j)}
+                            selected={beatSelected(steps, i, j)}
                           />
                         ))}
                         {drumKeysAvailable.map((i) => (
                           <TrackButton
                             key={"".concat(i).concat(j)}
                             onClick={() => drumHandleClick(i, j)}
+                            selected={beatSelected(drumSteps, i, j)}
                           />
                         ))}
                         {bassKeysAvailable.map((i) => (
                           <TrackButton
                             key={"".concat(i).concat(j)}
                             onClick={() => bassHandleClick(i, j)}
+                            selected={beatSelected(bassSteps, i, j)}
                           />
                         ))}
                       </TrackColumn>
