@@ -12,12 +12,31 @@
   border-width: 1px;
   padding: 4px;
 }
+.__visly_scope_Lj97Tq5SuJ_D9RTWhw5ad.__visly_default.__visly_state_hover {
+  background-color: #dedede;
+}
 .__visly_scope_Lj97Tq5SuJ_D9RTWhw5ad.__visly_default.__visly_state_pressed {
+  background-color: #009bff;
   box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+.__visly_scope_Lj97Tq5SuJ_D9RTWhw5ad.__visly_default.__visly_state_disabled {
+  background-color: #f4f4f4;
 }
 .__visly_scope_Lj97Tq5SuJ_D9RTWhw5ad .__visly_scope_Lj97Tq5SuJ_W4r7yiSBXP {
   width: 16px;
   height: 16px;
-  background-color: #000;
+  background-color: #dedede;
   display: block;
+}
+.__visly_scope_Lj97Tq5SuJ_D9RTWhw5ad.__visly_default.__visly_state_hover
+  .__visly_scope_Lj97Tq5SuJ_W4r7yiSBXP {
+  background-color: transparent;
+}
+.__visly_scope_Lj97Tq5SuJ_D9RTWhw5ad.__visly_default.__visly_state_pressed
+  .__visly_scope_Lj97Tq5SuJ_W4r7yiSBXP {
+  background-color: #009bff;
+}
+.__visly_scope_Lj97Tq5SuJ_D9RTWhw5ad.__visly_default.__visly_state_disabled
+  .__visly_scope_Lj97Tq5SuJ_W4r7yiSBXP {
+  background-color: #f4f4f4;
 }

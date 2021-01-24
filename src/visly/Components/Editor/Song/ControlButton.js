@@ -6,7 +6,6 @@ import "../../../reset.css";
 import "./ControlButton.css";
 import React, { createContext, useContext } from "react";
 import {
-  exists,
   findSetVariantProps,
   makeCompositeDefaultProps,
 } from "../../../_internal_utils";
@@ -19,7 +18,13 @@ const styles = [
     layers: {
       W4r7yiSBXP: {
         none: {
-          icon: icons.vislyCheck,
+          icon: icons.vislyRadioCenter,
+          useMask: true,
+        },
+        pressed: {
+          useMask: true,
+        },
+        disabled: {
           useMask: true,
         },
       },
@@ -67,7 +72,7 @@ function ControlButton(_props) {
           }
           key={"W4r7yiSBXP"}
           useMask={getStyle("W4r7yiSBXP", "useMask")}
-          src={exists(props.icon) ? props.icon : getStyle("W4r7yiSBXP", "icon")}
+          src={getStyle("W4r7yiSBXP", "icon")}
         />
       )}
     </RootPrimitive>

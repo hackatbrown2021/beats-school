@@ -10,7 +10,6 @@ import {
   makeCompositeDefaultProps,
 } from "../../../_internal_utils";
 import { RootPrimitive, SpacerPrimitive } from "../../../_internal_primitives";
-import * as icons from "../../../icons";
 import {
   default as Play,
   ControlButtonContext as PlayContext,
@@ -29,11 +28,7 @@ const defaultPropValues = [
   {
     type: "default",
     layers: {
-      YZbkJYc1YL: {
-        none: {
-          icon: icons.arrowRight,
-        },
-      },
+      YZbkJYc1YL: {},
     },
   },
 ];

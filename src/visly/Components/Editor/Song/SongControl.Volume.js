@@ -11,7 +11,6 @@ import {
   makeCompositeDefaultProps,
 } from "../../../_internal_utils";
 import { RootPrimitive, TextPrimitive } from "../../../_internal_primitives";
-import * as icons from "../../../icons";
 import {
   default as VolDecr,
   ControlButtonContext as VolDecrContext,
@@ -36,16 +35,8 @@ const defaultPropValues = [
   {
     type: "default",
     layers: {
-      PmYYNaG8Kq: {
-        none: {
-          icon: icons.minus,
-        },
-      },
-      Knw3FX5QfK: {
-        none: {
-          icon: icons.plus,
-        },
-      },
+      PmYYNaG8Kq: {},
+      Knw3FX5QfK: {},
     },
   },
 ];
