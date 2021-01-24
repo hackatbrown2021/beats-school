@@ -4,6 +4,13 @@ import { Dashboard } from "../visly/Layout/Home";
 import { SongDetail } from "../visly/Components/Song";
 import { SongEntry } from "../visly/Components/Song";
 import { auth, data, firebase } from "../auth/firebase";
+import {
+  uniqueNamesGenerator,
+  Config,
+  adjectives,
+  colors,
+  animals,
+} from "unique-names-generator";
 import { useHistory } from "react-router-dom";
 
 export default () => {
@@ -14,24 +21,29 @@ export default () => {
   let [content, setContent] = useState(<React.Fragment></React.Fragment>);
 
   const songEntryFromDoc = (doc) => {
-    const s_data = doc.data();
-    console.log(s_data);
+    if (doc.exists) {
+      const s_data = doc.data();
+      console.log("THEM DATAS");
+      console.log(doc);
 
-    return (
-      <SongEntry
-        id={"song" + doc.id}
-        songName={s_data.name}
-        dateName={new Date(s_data.ts_start.seconds * 1000).toDateString()}
-        progress={"50 %"}
-        ContinueButton={
-          <SongEntry.ContinueButton
-            onPress={() => {
-              history.push("/dawsample/" + doc.id);
-            }}
-          />
-        }
-      />
-    );
+      return (
+        <SongEntry
+          id={"song" + doc.id}
+          songName={s_data.name}
+          dateName={new Date(s_data.ts_start.seconds * 1000).toDateString()}
+          progress={"50 %"}
+          ContinueButton={
+            <SongEntry.ContinueButton
+              onPress={() => {
+                history.push("/dawsample/" + doc.id);
+              }}
+            />
+          }
+        />
+      );
+    } else {
+      return <></>;
+    }
   };
 
   useEffect(() => {
@@ -54,14 +66,19 @@ export default () => {
             if (!doc.exists) {
               data
                 .collection("songs")
-                .where("tracks", "<", "3")
+                .where("tracks", "<", 3)
                 .get()
                 .then((querySnapshot) => {
                   if (querySnapshot.empty) {
+                    console.log("NO existing song");
                     var newSong = data.collection("songs").doc();
 
                     newSong.set({
-                      name: "New Song",
+                      name: uniqueNamesGenerator({
+                        dictionaries: [adjectives, animals],
+                        length: 2,
+                        separator: " ",
+                      }),
                       ts_start: firebase.firestore.FieldValue.serverTimestamp(),
                       tracks: 1,
                     });
@@ -70,8 +87,18 @@ export default () => {
                       type: "melody",
                     });
                   } else {
+                    console.log("existing song");
                     var selectSong = querySnapshot.docs[0];
-                    selectSong.tracks = selectSong.tracks + 1;
+                    console.log(selectSong);
+                    console.log(selectSong.data());
+
+                    console.log("SONNNGG");
+                    console.log(selectSong.id);
+
+                    selectSong.ref.update({
+                      tracks: selectSong.data().tracks + 1,
+                    });
+
                     var trackType = "drum";
                     if (selectSong.tracks === 3) {
                       trackType = "bass";
@@ -154,9 +181,11 @@ export default () => {
               Promise.all(songPromises).then((documents) => {
                 let songs = [];
                 documents.forEach((doc) => {
-                  const s_data = doc.data();
-                  if (s_data.completed === true) {
-                    songs.push(songEntryFromDoc(doc));
+                  if (doc.exists) {
+                    const s_data = doc.data();
+                    if (s_data.completed === true) {
+                      songs.push(songEntryFromDoc(doc));
+                    }
                   }
                 });
                 setContent(<Dashboard.SongList>{songs}</Dashboard.SongList>);
