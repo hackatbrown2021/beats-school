@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Dashboard } from "../visly/Layout/Home";
 import { SongDetail } from "../visly/Components/Song";
 import { SongEntry } from "../visly/Components/Song";
-import { auth, data } from "../auth/firebase";
+import { auth, data, firebase } from "../auth/firebase";
 import { useHistory } from "react-router-dom";
 
 const songEntryFromDoc = (doc) => {
@@ -44,29 +44,62 @@ export default () => {
           .doc(user.uid)
           .get()
           .then((doc) => {
-            const t_data = doc.data();
-            const song_id = t_data.song_id;
-            const t_type = t_data.type;
+            if (!doc.exists) {
+              data
+                .collection("songs")
+                .where("tracks", "<", "3")
+                .get()
+                .then((querySnapshot) => {
+                  if (querySnapshot.empty) {
+                    var newSong = data.collection("songs").doc();
 
-            data
-              .collection("songs")
-              .doc(song_id)
-              .get()
-              .then((doc) => {
-                const s_data = doc.data();
-                setContent(
-                  <div
-                    style={{
-                      width: "100%",
-                      justifyContent: "center",
-                      display: "flex",
-                      paddingTop: "16px",
-                    }}
-                  >
-                    <SongDetail name={s_data.name} type={t_type} />
-                  </div>
-                );
-              });
+                    newSong.set({
+                      name: "New Song",
+                      ts_start: firebase.firestore.FieldValue.serverTimestamp(),
+                      tracks: 1,
+                    });
+                    data.collection("assignments").doc(user.uid).set({
+                      song_id: newSong.id,
+                      type: "melody",
+                    });
+                  } else {
+                    var selectSong = querySnapshot.docs[0];
+                    selectSong.tracks = selectSong.tracks + 1;
+                    var trackType = "drum";
+                    if (selectSong.tracks === 3) {
+                      trackType = "bass";
+                    }
+                    data.collection("assignments").doc(user.uid).set({
+                      song_id: selectSong.id,
+                      type: trackType,
+                    });
+                  }
+                });
+            } else {
+              const t_data = doc.data();
+              const song_id = t_data.song_id;
+              const t_type = t_data.type;
+
+              data
+                .collection("songs")
+                .doc(song_id)
+                .get()
+                .then((doc) => {
+                  const s_data = doc.data();
+                  setContent(
+                    <div
+                      style={{
+                        width: "100%",
+                        justifyContent: "center",
+                        display: "flex",
+                        paddingTop: "16px",
+                      }}
+                    >
+                      <SongDetail name={s_data.name} type={t_type} />
+                    </div>
+                  );
+                });
+            }
           });
       } else {
         if (tab === "contributed") {
