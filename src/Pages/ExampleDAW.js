@@ -16,8 +16,8 @@ import r_highhat from "../sounds/rock/r_HighHat.wav";
 import r_kick from "../sounds/rock/r_Kick.wav";
 import r_snare from "../sounds/rock/r_Snare.wav";
 
-import { auth } from "../auth/firebase";
-import { useHistory } from "react-router-dom";
+import { auth, data } from "../auth/firebase";
+import { useHistory, useParams } from "react-router-dom";
 
 const genEmptyTrack = (length) => {
   var track = [];
@@ -32,10 +32,13 @@ const beatSelected = (instrumentSteps, note, step) => {
 };
 
 export default () => {
+  const history = useHistory();
   const [notes, setNotes] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [currentStepIndex, setCurrentStepIndex] = React.useState(0);
+  const [songName, setSongName] = React.useState("Name");
+  const [currentTrack, setCurrentTrack] = React.useState(null);
   const [BPM, setBPM] = React.useState(120);
   const [volumeLevel, setVolumeLevel] = React.useState(-5);
   //const [melodyInstrument, setMelodyInstrument] = React.useState("pluckSynth");
@@ -43,6 +46,60 @@ export default () => {
   const [steps, setSteps] = React.useState(genEmptyTrack(SONG_LENGTH));
   const [drumSteps, setDrumSteps] = React.useState(genEmptyTrack(SONG_LENGTH));
   const [bassSteps, setBassSteps] = React.useState(genEmptyTrack(SONG_LENGTH));
+  let [user, setUser] = useState(null);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((newUser) => {
+      setUser(newUser);
+    });
+  });
+
+  const { song_id } = useParams();
+
+  useEffect(() => {
+    if (user !== null) {
+      data
+        .collection("assignments")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+          const a_data = doc.data();
+          if ((a_data === null) | (a_data.song_id !== song_id)) {
+            history.push("/dashboard");
+          } else {
+            // LOAD SONG DATA
+            data
+              .collection("songs")
+              .doc(song_id)
+              .get()
+              .then((doc) => {
+                const s_data = doc.data();
+                setSongName(s_data.name);
+              });
+            // LOAD OTHER TRACKS
+            setCurrentTrack(a_data.type);
+            data
+              .collection("tracks")
+              .where("song_id", "==", song_id)
+              .get()
+              .then((querySnapshot) => {
+                console.log("finding tracks");
+                querySnapshot.forEach((doc) => {
+                  const t_data = doc.data();
+                  console.log("track");
+                  if (t_data.type === "melody") {
+                    setSteps(t_data.data);
+                  } else if (t_data.type === "drum") {
+                    setDrumSteps(t_data.data);
+                  } else if (t_data.type === "bass") {
+                    setBassSteps(t_data.data);
+                  }
+                });
+              });
+          }
+        });
+    }
+  }, [user]);
 
   const keysAvailable = [
     "B3",
@@ -142,19 +199,20 @@ export default () => {
             <Daw.TrackTable
               Notes={
                 <>
-                  {keysAvailable.map((i) => (
-                    <TrackLabel text={i} />
-                  ))}
-
-                  <TrackLabel text={"Hip-Hop High Hat"} />
-                  <TrackLabel text={"Hip-Hop Kick"} />
-                  <TrackLabel text={"Hip-Hop Snare"} />
-                  <TrackLabel text={"Rock High Hat"} />
-                  <TrackLabel text={"Rock Kick"} />
-                  <TrackLabel text={"Rock Snare"} />
-                  {bassKeysAvailable.map((i) => (
-                    <TrackLabel text={i} />
-                  ))}
+                  {currentTrack === "melody" &&
+                    keysAvailable.map((i) => <TrackLabel text={i} />)}
+                  {currentTrack === "drum" && (
+                    <>
+                      <TrackLabel text={"Hip-Hop High Hat"} />
+                      <TrackLabel text={"Hip-Hop Kick"} />
+                      <TrackLabel text={"Hip-Hop Snare"} />
+                      <TrackLabel text={"Rock High Hat"} />
+                      <TrackLabel text={"Rock Kick"} />
+                      <TrackLabel text={"Rock Snare"} />
+                    </>
+                  )}
+                  {currentTrack === "bass" &&
+                    bassKeysAvailable.map((i) => <TrackLabel text={i} />)}
                 </>
               }
               Grid={
@@ -178,27 +236,30 @@ export default () => {
                   {[...Array(SONG_LENGTH).keys()].map((j) => (
                     <>
                       <TrackColumn>
-                        {keysAvailable.map((i) => (
-                          <TrackButton
-                            key={"".concat(i).concat(j)}
-                            onClick={() => handleClick(i, j)}
-                            selected={beatSelected(steps, i, j)}
-                          />
-                        ))}
-                        {drumKeysAvailable.map((i) => (
-                          <TrackButton
-                            key={"".concat(i).concat(j)}
-                            onClick={() => drumHandleClick(i, j)}
-                            selected={beatSelected(drumSteps, i, j)}
-                          />
-                        ))}
-                        {bassKeysAvailable.map((i) => (
-                          <TrackButton
-                            key={"".concat(i).concat(j)}
-                            onClick={() => bassHandleClick(i, j)}
-                            selected={beatSelected(bassSteps, i, j)}
-                          />
-                        ))}
+                        {currentTrack === "melody" &&
+                          keysAvailable.map((i) => (
+                            <TrackButton
+                              key={"".concat(i).concat(j)}
+                              onClick={() => handleClick(i, j)}
+                              selected={beatSelected(steps, i, j)}
+                            />
+                          ))}
+                        {currentTrack === "drum" &&
+                          drumKeysAvailable.map((i) => (
+                            <TrackButton
+                              key={"".concat(i).concat(j)}
+                              onClick={() => drumHandleClick(i, j)}
+                              selected={beatSelected(drumSteps, i, j)}
+                            />
+                          ))}
+                        {currentTrack === "bass" &&
+                          bassKeysAvailable.map((i) => (
+                            <TrackButton
+                              key={"".concat(i).concat(j)}
+                              onClick={() => bassHandleClick(i, j)}
+                              selected={beatSelected(bassSteps, i, j)}
+                            />
+                          ))}
                       </TrackColumn>
                     </>
                   ))}
@@ -212,8 +273,8 @@ export default () => {
         }
         SongInfo={
           <Daw.SongInfo
-            text="Song Name"
-            trackFocus="Melody"
+            text={songName}
+            trackFocus={currentTrack}
             ExistingTracks={
               <ul>{/* <li>melody</li>
                 <li>beat</li> */}</ul>

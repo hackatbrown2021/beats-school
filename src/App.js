@@ -87,7 +87,7 @@ const App = () => {
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignUpPage} />
         <Route path="/daw" component={DAWPage} />
-        <Route path="/dawsample" component={ExampleDAW} />
+        <Route path="/dawsample/:song_id" component={ExampleDAW} />
       </Switch>
     </main>
   );
