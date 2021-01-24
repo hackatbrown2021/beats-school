@@ -36,10 +36,10 @@ export default () => {
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [currentStepIndex, setCurrentStepIndex] = React.useState(0);
-  const [BPM, setBPM] = React.useState(90);
+  const [BPM, setBPM] = React.useState(120);
   const [volumeLevel, setVolumeLevel] = React.useState(-5);
   //const [melodyInstrument, setMelodyInstrument] = React.useState("pluckSynth");
-  const SONG_LENGTH = 16;
+  const SONG_LENGTH = 32;
   const [steps, setSteps] = React.useState(genEmptyTrack(SONG_LENGTH));
   const [drumSteps, setDrumSteps] = React.useState(genEmptyTrack(SONG_LENGTH));
   const [bassSteps, setBassSteps] = React.useState(genEmptyTrack(SONG_LENGTH));
@@ -77,8 +77,9 @@ export default () => {
   ];
 
   const beatLabels = [...new Array(SONG_LENGTH).keys()].map((val) => {
-    const beat = val + 1;
-    if (beat % 4 != 1) {
+    const beat = val / 2 + 1;
+
+    if (beat % 1 != 0) {
       return "";
     } else {
       return "".concat(beat);
@@ -268,7 +269,7 @@ export default () => {
           />
         }
       />
-      <Song bpm={BPM} volume={volumeLevel} isPlaying={isPlaying}>
+      <Song bpm={BPM * 2} volume={volumeLevel} isPlaying={isPlaying}>
         <Track
           steps={steps}
           // Callback triggers on every step
@@ -296,6 +297,14 @@ export default () => {
               D22: r_snare,
             }}
           ></Instrument>
+        </Track>
+        <Track
+          steps={bassSteps}
+          onStepPlay={(stepNotes, index) => {
+            setCurrentStepIndex(index);
+          }}
+        >
+          <Instrument type="duoSynth" />
         </Track>
       </Song>
     </>
