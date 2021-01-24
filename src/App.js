@@ -10,6 +10,7 @@ import ProfilePage from "./Pages/Profile";
 import LandingPage from "./Pages/Landing";
 import DashboardPage from "./Pages/Dashboard";
 import MusicApp from "./MusicApp.js";
+import DAWPage from "./Pages/DAW";
 import { Route, Switch } from "react-router-dom";
 import { auth } from "./auth/firebase";
 import { useHistory } from "react-router-dom";
@@ -84,6 +85,7 @@ const App = () => {
         <Route path="/music" component={MusicApp} />
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignUpPage} />
+        <Route path="/daw" component={DAWPage} />
       </Switch>
     </main>
   );
