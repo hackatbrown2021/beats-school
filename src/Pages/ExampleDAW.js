@@ -17,6 +17,14 @@ import r_snare from "../sounds/rock/r_Snare.wav";
 import { auth } from "../auth/firebase";
 import { useHistory } from "react-router-dom";
 
+const genEmptyTrack = (length) => {
+  var track = [];
+  for (let i = 0; i < length; i++) {
+    track.push([]);
+  }
+  return track;
+};
+
 export default () => {
   const [notes, setNotes] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
@@ -26,108 +34,9 @@ export default () => {
   const [volumeLevel, setVolumeLevel] = React.useState(-5);
   //const [melodyInstrument, setMelodyInstrument] = React.useState("pluckSynth");
   const SONG_LENGTH = 16;
-  const [steps, setSteps] = React.useState([
-    [], // 1 measure
-    [], // 2 measures...
-    [], // 3
-    [], // 4
-    [], // 5
-    [], // 6
-    [], // 7
-    [], // 8
-    [], // 9
-    [], // 10
-    [], // 11
-    [], // 12
-    [], // 13
-    [], // 14
-    [], // 15
-    [], // 16
-    // [], // 17
-    // [], // 18
-    // [], // 19
-    // [], // 20
-    // [], // 21
-    // [], // 22
-    // [], // 23
-    // [], // 24
-    // [], // 25
-    // [], // 26
-    // [], // 27
-    // [], // 28
-    // [], // 29
-    // [], // 30
-    // [], // 31
-    // [], // 32
-  ]);
-  const [drumSteps, setDrumSteps] = React.useState([
-    [], // 1 measure
-    [], // 2 measures...
-    [], // 3
-    [], // 4
-    [], // 5
-    [], // 6
-    [], // 7
-    [], // 8
-    [], // 9
-    [], // 10
-    [], // 11
-    [], // 12
-    [], // 13
-    [], // 14
-    [], // 15
-    [], // 16
-    // [], // 17
-    // [], // 18
-    // [], // 19
-    // [], // 20
-    // [], // 21
-    // [], // 22
-    // [], // 23
-    // [], // 24
-    // [], // 25
-    // [], // 26
-    // [], // 27
-    // [], // 28
-    // [], // 29
-    // [], // 30
-    // [], // 31
-    // [], // 32
-  ]);
-  const [bassSteps, setBassSteps] = React.useState([
-    [], // 1 measure
-    [], // 2 measures...
-    [], // 3
-    [], // 4
-    [], // 5
-    [], // 6
-    [], // 7
-    [], // 8
-    [], // 9
-    [], // 10
-    [], // 11
-    [], // 12
-    [], // 13
-    [], // 14
-    [], // 15
-    [], // 16
-    // [], // 17
-    // [], // 18
-    // [], // 19
-    // [], // 20
-    // [], // 21
-    // [], // 22
-    // [], // 23
-    // [], // 24
-    // [], // 25
-    // [], // 26
-    // [], // 27
-    // [], // 28
-    // [], // 29
-    // [], // 30
-    // [], // 31
-    // [], // 32
-  ]);
+  const [steps, setSteps] = React.useState(genEmptyTrack(SONG_LENGTH));
+  const [drumSteps, setDrumSteps] = React.useState(genEmptyTrack(SONG_LENGTH));
+  const [bassSteps, setBassSteps] = React.useState(genEmptyTrack(SONG_LENGTH));
 
   const keysAvailable = [
     "C3",
