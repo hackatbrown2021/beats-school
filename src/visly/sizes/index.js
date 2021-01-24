@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export const dimensions = {
+  beatgrid: "26px",
   sizeMedium: "16px",
   sizeSmall: "8px",
   sizeXlarge: "40px",

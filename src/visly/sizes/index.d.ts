@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export const dimensions: {
+  beatgrid: string;
   sizeMedium: string;
   sizeSmall: string;
   sizeXlarge: string;
