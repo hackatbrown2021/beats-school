@@ -5,6 +5,7 @@ import { SignIn } from "./visly/Components/Navbar/";
 import { Account } from "./visly/Components/Navbar/";
 import Navbar from "./visly/Layout/Navbar";
 import LoginPage from "./Pages/Login";
+import SignUpPage from "./Pages/SignUp";
 import ProfilePage from "./Pages/Profile";
 import LandingPage from "./Pages/Landing";
 import MusicApp from "./MusicApp.js";
@@ -47,10 +48,17 @@ const App = () => {
         AccountButton={
           user == null ? (
             <SignIn
-              Button={
-                <SignIn.Button
+              ExistingUser={
+                <SignIn.ExistingUser
                   onClick={() => {
                     history.push("/login");
+                  }}
+                />
+              }
+              NewUser={
+                <SignIn.NewUser
+                  onClick={() => {
+                    history.push("/signup");
                   }}
                 />
               }
@@ -73,6 +81,7 @@ const App = () => {
         <Route path="/profile" component={ProfilePage} />
         <Route path="/music" component={MusicApp} />
         <Route path="/login" component={LoginPage} />
+        <Route path="/signup" component={SignUpPage} />
       </Switch>
     </main>
   );

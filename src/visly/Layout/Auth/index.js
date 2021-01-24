@@ -2,4 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 import component_0 from "./Login";
+import component_1 from "./SignUp";
 export const Login = component_0;
+export const SignUp = component_1;

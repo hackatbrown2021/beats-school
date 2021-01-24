@@ -11,7 +11,12 @@ import {
 } from "../../_internal_utils";
 import { RootPrimitive } from "../../_internal_primitives";
 import * as icons from "../../icons";
-import { default as Button, ButtonContext } from "../../Button";
+import {
+  default as NewUser,
+  ButtonContext as NewUserContext,
+  default as ExistingUser,
+  ButtonContext as ExistingUserContext,
+} from "../../Button";
 
 const styles = [
   {
@@ -25,6 +30,14 @@ const defaultPropValues = [
     type: "default",
     layers: {
       "3nbXUv6VoL": {
+        none: {
+          text: "Sign Up",
+          icon: icons.heart,
+          kind: "secondary",
+          withIcon: true,
+        },
+      },
+      VHx2yWojBy: {
         none: {
           text: "Sign In",
           icon: icons.externalLink,
@@ -52,7 +65,7 @@ function SignIn(_props) {
     <RootPrimitive
       {...props}
       key="3cUuDHpigw"
-      addSpacing={false}
+      addSpacing={true}
       internal={{
         projectId: "7X7HTLRqyD",
         styles: styles,
@@ -61,34 +74,56 @@ function SignIn(_props) {
         activeVariants: activeVariants,
       }}
     >
-      {(getStyle) =>
-        props.Button === undefined ? (
-          <Button
+      {(getStyle) => [
+        props.NewUser === undefined ? (
+          <NewUser
             key={"3nbXUv6VoL"}
             {...getCompositeDefaultProps("3nbXUv6VoL")}
-            id="Button_3nbXUv6VoL"
+            id="NewUser_3nbXUv6VoL"
             className="__visly_reset_7X7HTLRqyD __visly_scope_2Sc6yyoKXd_3nbXUv6VoL"
           />
         ) : (
-          <ButtonContext.Provider
+          <NewUserContext.Provider
             key="3nbXUv6VoL-provider"
             value={{
               key: "3nbXUv6VoL",
-              id: "Button_3nbXUv6VoL",
+              id: "NewUser_3nbXUv6VoL",
               className:
                 "__visly_reset_7X7HTLRqyD __visly_scope_2Sc6yyoKXd_3nbXUv6VoL",
               ...getCompositeDefaultProps("3nbXUv6VoL"),
             }}
           >
-            {props.Button}
-          </ButtonContext.Provider>
-        )
-      }
+            {props.NewUser}
+          </NewUserContext.Provider>
+        ),
+        props.ExistingUser === undefined ? (
+          <ExistingUser
+            key={"VHx2yWojBy"}
+            {...getCompositeDefaultProps("VHx2yWojBy")}
+            id="ExistingUser_VHx2yWojBy"
+            className="__visly_reset_7X7HTLRqyD __visly_scope_2Sc6yyoKXd_VHx2yWojBy"
+          />
+        ) : (
+          <ExistingUserContext.Provider
+            key="VHx2yWojBy-provider"
+            value={{
+              key: "VHx2yWojBy",
+              id: "ExistingUser_VHx2yWojBy",
+              className:
+                "__visly_reset_7X7HTLRqyD __visly_scope_2Sc6yyoKXd_VHx2yWojBy",
+              ...getCompositeDefaultProps("VHx2yWojBy"),
+            }}
+          >
+            {props.ExistingUser}
+          </ExistingUserContext.Provider>
+        ),
+      ]}
     </RootPrimitive>
   );
 }
 
-SignIn.Button = Button;
+SignIn.NewUser = NewUser;
+SignIn.ExistingUser = ExistingUser;
 SignIn.__variants = [];
 
 export default SignIn;

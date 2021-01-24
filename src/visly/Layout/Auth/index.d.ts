@@ -2,4 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 import Login from "./Login";
-export { Login };
+import SignUp from "./SignUp";
+export { Login, SignUp };
